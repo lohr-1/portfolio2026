@@ -92,25 +92,35 @@ export default function App() {
         <div className="flex flex-col">
           <RevealBlock delay={0.1}>
             <Card 
-              title="Project Alpha" 
+              title="The Dog API" 
               stat="Full Stack" 
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec odio vitae nulla congue dictum. Suspendisse potenti." 
-              image="https://picsum.photos/seed/p1/800/400" 
+              description="[MOCKUP TEXT] A complete full-stack web application designed to consume dog-related data, featuring detailed breed information and dynamic image rendering." 
+              image="https://picsum.photos/seed/dogapi/800/400" 
+              link="https://github.com/lohr-1/thedogapi"
             />
           </RevealBlock>
           <RevealBlock delay={0.2}>
             <Card 
-              title="Global Supply" 
-              stat="Frontend System" 
-              description="Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae. Integer sagittis justo vel magna bibendum." 
-              image="https://picsum.photos/seed/p2/800/400" 
+              title="Gestão de Estoque" 
+              stat="In Progress · Management" 
+              description="[MOCKUP TEXT] Sistema robusto aplicado para a gestão e controle de estoque, focando em usabilidade e performance para logística empresarial." 
+              image="https://picsum.photos/seed/stock/800/400" 
             />
           </RevealBlock>
           <RevealBlock delay={0.3}>
             <Card 
-              title="MetaHuman Center" 
-              stat="Mobile Application" 
-              description="Proin sodales, risus sed porta faucibus, elit felis pretium odio, et fringilla eros erat non metus. Quisque vehicula velit vitae." 
+              title="Task Manager & Moodle" 
+              stat="In Progress · Education API" 
+              description="[MOCKUP TEXT] Task manager dedicado a professores universitários, com integração nativa e bidirecional com a API do Moodle." 
+              image="https://picsum.photos/seed/task/800/400" 
+            />
+          </RevealBlock>
+          <RevealBlock delay={0.4}>
+            <Card 
+              title="Universidade Sistema" 
+              stat="In Progress · Core System" 
+              description="[MOCKUP TEXT] Aplicação de gestão centralizada construída sob medida para a própria administração das rotinas da universidade." 
+              image="https://picsum.photos/seed/uni/800/400" 
             />
           </RevealBlock>
         </div>
