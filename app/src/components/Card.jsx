@@ -106,7 +106,7 @@ export default function Card({ title, stat, description, image, align = 'left', 
       </div>
 
       <div
-        className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none translate-y-[101%] z-20 flex items-center bg-primary"
+        className="absolute top-0 left-0 w-full h-full overflow-hidden translate-y-[101%] z-20 flex items-center bg-primary"
         ref={marqueeRef}
       >
         <div className="h-full w-fit flex items-center" ref={marqueeInnerRef}>

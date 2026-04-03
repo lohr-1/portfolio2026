@@ -94,7 +94,7 @@ const ClickSpark = ({
         const x2 = spark.x + (distance + lineLength) * Math.cos(spark.angle);
         const y2 = spark.y + (distance + lineLength) * Math.sin(spark.angle);
 
-        ctx.strokeStyle = sparkColor;
+        ctx.strokeStyle = spark.color || sparkColor;
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.moveTo(x1, y1);
@@ -122,11 +122,32 @@ const ClickSpark = ({
     const y = e.clientY - rect.top;
 
     const now = performance.now();
+
+    let bgObj = e.target;
+    let bgColor = 'rgb(255, 255, 255)';
+    while (bgObj) {
+      const bg = window.getComputedStyle(bgObj).backgroundColor;
+      if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+        bgColor = bg;
+        break;
+      }
+      bgObj = bgObj.parentElement;
+    }
+
+    let calculatedColor = sparkColor;
+    const match = bgColor.match(/\d+/g);
+    if (match && match.length >= 3) {
+      const [r, g, b] = match.map(Number);
+      const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
+      calculatedColor = luminance < 128 ? '#ffffff' : '#000000';
+    }
+
     const newSparks = Array.from({ length: sparkCount }, (_, i) => ({
       x,
       y,
       angle: (2 * Math.PI * i) / sparkCount,
-      startTime: now
+      startTime: now,
+      color: calculatedColor
     }));
 
     sparksRef.current.push(...newSparks);

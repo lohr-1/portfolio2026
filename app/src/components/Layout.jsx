@@ -9,7 +9,7 @@ export default function Layout({ children }) {
         <div className="w-64 border-r border-primary flex flex-col bg-surface shrink-0 hidden md:flex">
           <Sidebar />
         </div>
-        <main className="flex-1 overflow-y-auto w-full relative">
+        <main id="main-scroll" className="flex-1 overflow-y-auto w-full relative scroll-smooth">
           <div className="absolute top-0 left-0 w-full h-[1px] bg-primary"></div>
           {children}
         </main>

@@ -6,7 +6,7 @@ export default function RevealBlock({ children, delay = 0, className = "" }) {
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10%" }}
+      viewport={{ once: false, margin: "-10%" }}
       transition={{ duration: 0.2, ease: "linear", delay }}
       className={`relative ${className}`}
     >

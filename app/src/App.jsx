@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from './components/Layout';
 import Button from './components/Button';
 import Input from './components/Input';
 import Card from './components/Card';
 import RevealBlock from './components/RevealBlock';
-import { PenTool, Code, Terminal, GitBranch, Server, Smartphone, Globe, Cloud, LayoutPanelLeft, Layout as LayoutIcon } from 'lucide-react';
+import { ArrowDown, PenTool, Code, Terminal, GitBranch, Server, Smartphone, Globe, Cloud, LayoutPanelLeft, Layout as LayoutIcon } from 'lucide-react';
 
 const tools = [
   { name: 'Figma', icon: <PenTool className="w-8 h-8" /> },
@@ -27,10 +27,24 @@ const skills = [
 ];
 
 export default function App() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const main = document.getElementById('main-scroll');
+    const handleScroll = () => {
+      setIsScrolled(main?.scrollTop > 50);
+    };
+    main?.addEventListener('scroll', handleScroll);
+    return () => main?.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <Layout>
       {/* 1. GENERAL (Hero) */}
-      <section id="general" className="min-h-screen border-b border-primary p-8 md:p-16 flex flex-col md:flex-row gap-8 justify-between items-start pt-24 md:pt-16">
+      <section id="general" className="relative min-h-screen border-b border-primary p-8 md:p-16 flex flex-col md:flex-row gap-8 justify-between items-start pt-24 md:pt-16">
+        <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 transition-opacity duration-300 ${isScrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+          <ArrowDown className="w-10 h-10 animate-bounce text-primary" strokeWidth={2.5} />
+        </div>
         <RevealBlock className="max-w-3xl pt-16 md:pt-32">
           <h2 className="font-display text-7xl md:text-[9rem] font-bold tracking-tighter leading-[0.85] mb-8">
             SOFTWARE<br/>ENGINEER.
@@ -51,14 +65,14 @@ export default function App() {
       </section>
 
       {/* 2. ABOUT ME */}
-      <section id="about" className="min-h-screen border-b border-primary p-8 md:p-16 flex flex-col">
-        <RevealBlock>
-          <div className="border-b border-primary pb-8 mb-16">
-             <h3 className="font-display text-2xl font-bold tracking-tight uppercase">01 // About Me</h3>
-          </div>
-        </RevealBlock>
+      <section id="about" className="min-h-screen border-b border-primary flex flex-col">
+        <div className="sticky top-0 z-20 bg-background border-b border-primary">
+          <RevealBlock className="p-8 md:p-16 pb-8">
+            <h3 className="font-display text-2xl font-bold tracking-tight uppercase">01 // About Me</h3>
+          </RevealBlock>
+        </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 flex-1">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 flex-1 p-8 md:p-16 pt-16 md:pt-16">
           <RevealBlock delay={0.1} className="flex flex-col justify-center">
              <h2 className="font-display text-5xl md:text-6xl font-bold tracking-tighter leading-none mb-8">
                A LOGICAL APPROACH TO COMPLEX ARCHITECTURES.
@@ -85,9 +99,11 @@ export default function App() {
 
       {/* 3. PROJECTS */}
       <section id="projects" className="min-h-screen border-b border-primary flex flex-col pb-16">
-        <RevealBlock className="p-8 md:p-16 pb-8 border-b border-primary">
-          <h3 className="font-display text-2xl font-bold tracking-tight uppercase">02 // Selected Projects</h3>
-        </RevealBlock>
+        <div className="sticky top-0 z-20 bg-background border-b border-primary">
+          <RevealBlock className="p-8 md:p-16 pb-8">
+            <h3 className="font-display text-2xl font-bold tracking-tight uppercase">02 // Selected Projects</h3>
+          </RevealBlock>
+        </div>
         
         <div className="flex flex-col">
           <RevealBlock delay={0.1}>
@@ -128,19 +144,21 @@ export default function App() {
 
       {/* 4. SKILLS & TOOLS */}
       <section id="skills" className="min-h-screen border-b border-primary flex flex-col">
-        <RevealBlock className="p-8 md:p-16 border-b border-primary">
-           <h3 className="font-display text-2xl font-bold tracking-tight uppercase">03 // Skills & Tools</h3>
-        </RevealBlock>
+        <div className="sticky top-0 z-20 bg-background border-b border-primary">
+          <RevealBlock className="p-8 md:p-16">
+             <h3 className="font-display text-2xl font-bold tracking-tight uppercase">03 // Skills & Tools</h3>
+          </RevealBlock>
+        </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 -mt-[1px]">
-           {/* Skills Side */}
-           <div className="border-r border-b lg:border-b-0 border-primary">
+        <div className="flex flex-col -mt-[1px]">
+           {/* Skills Block */}
+           <div>
               <RevealBlock className="p-8 border-b border-primary bg-surface-container-low font-label text-xs tracking-widest uppercase">
                 Languages & Frameworks
               </RevealBlock>
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-2 lg:grid-cols-4">
                  {skills.map((skill, index) => (
-                    <RevealBlock key={skill.name} delay={index * 0.05} className="col-span-1 border-b border-primary sm:border-r aspect-square sm:aspect-auto sm:h-64 flex flex-col items-center justify-center p-8 gap-4 hover:bg-primary hover:text-on-primary transition-colors duration-150">
+                    <RevealBlock key={skill.name} delay={index * 0.05} className="col-span-1 border-b border-primary border-r [&:nth-child(2n)]:border-r-0 lg:[&:nth-child(2n)]:border-r lg:[&:nth-child(4n)]:border-r-0 aspect-square sm:aspect-auto sm:h-64 flex flex-col items-center justify-center p-8 gap-4 hover:bg-primary hover:text-on-primary transition-colors duration-150">
                        {skill.icon}
                        <span className="font-label text-xs uppercase tracking-widest text-center">{skill.name}</span>
                     </RevealBlock>
@@ -148,19 +166,20 @@ export default function App() {
               </div>
            </div>
            
-           {/* Tools Side */}
+           {/* Tools Block */}
            <div>
               <RevealBlock className="p-8 border-b border-primary bg-surface-container-low font-label text-xs tracking-widest uppercase">
                 Software & Platforms
               </RevealBlock>
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-2 lg:grid-cols-4">
                  {tools.map((tool, index) => (
-                    <RevealBlock key={tool.name} delay={index * 0.05} className="col-span-1 border-b border-primary sm:border-r aspect-square sm:aspect-auto sm:h-64 flex flex-col items-center justify-center p-8 gap-4 hover:bg-primary hover:text-on-primary transition-colors duration-150">
+                    <RevealBlock key={tool.name} delay={index * 0.05} className="col-span-1 border-b border-primary border-r [&:nth-child(2n)]:border-r-0 lg:[&:nth-child(2n)]:border-r lg:[&:nth-child(4n)]:border-r-0 aspect-square sm:aspect-auto sm:h-64 flex flex-col items-center justify-center p-8 gap-4 hover:bg-primary hover:text-on-primary transition-colors duration-150">
                        {tool.icon}
                        <span className="font-label text-xs uppercase tracking-widest text-center">{tool.name}</span>
                     </RevealBlock>
                  ))}
-                 <div className="col-span-2 border-b border-primary sm:border-r h-0 sm:h-64 hidden sm:block"></div>
+                 <div className="col-span-1 border-b border-primary border-r sm:h-64 hidden lg:block"></div>
+                 <div className="col-span-1 border-b border-primary sm:h-64 hidden lg:block"></div>
               </div>
            </div>
         </div>
