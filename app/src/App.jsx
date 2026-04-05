@@ -4,7 +4,7 @@ import Button from './components/Button';
 import Input from './components/Input';
 import Card from './components/Card';
 import RevealBlock from './components/RevealBlock';
-import { ArrowDown, PenTool, Code, Terminal, GitBranch, Server, Smartphone, Globe, Cloud, LayoutPanelLeft, Layout as LayoutIcon } from 'lucide-react';
+import { ArrowDown, PenTool, Code, Terminal, GitBranch, Server, Smartphone, Globe, Cloud, LayoutPanelLeft, Layout as LayoutIcon, Check, ArrowDownToLine } from 'lucide-react';
 
 const tools = [
   { name: 'Figma', icon: <PenTool className="w-8 h-8" /> },
@@ -186,24 +186,66 @@ export default function App() {
       </section>
 
       {/* 5. CONTACT */}
-      <section id="contact" className="min-h-screen p-8 md:p-16 flex justify-center items-center">
-        <RevealBlock className="w-full max-w-2xl border border-primary bg-surface-container-low p-8 md:p-16">
-           <h2 className="font-display text-5xl font-bold tracking-tighter mb-4">ESTABLISH<br/>CONNECTION.</h2>
-           <p className="font-body text-secondary mb-12">Submit your coordinates. A transmission will be sent.</p>
-           
-           <form className="flex flex-col gap-8" onSubmit={(e) => e.preventDefault()}>
-             <Input label="Identity (Name)" placeholder="John Doe" />
-             <Input label="Frequency (Email)" type="email" placeholder="john@domain.com" />
-             <div className="flex flex-col relative w-full mb-6">
-                <label className="font-label uppercase text-xs mb-2 text-primary">Transmission (Message)</label>
-                <textarea 
-                  rows="4"
-                  placeholder="Your signal here..."
-                  className="w-full bg-transparent border-b border-primary py-2 font-body text-primary focus:outline-none focus:bg-surface-container-highest transition-none placeholder:text-outline resize-none"
-                />
-             </div>
-             <Button className="self-start mt-4">Send Protocol</Button>
-           </form>
+      {/* 5. CONTACT */}
+      <section id="contact" className="min-h-screen border-b border-primary pt-16 md:pt-32">
+        <RevealBlock className="flex flex-col justify-between h-full min-h-[calc(100vh-theme(spacing.16))] md:min-h-[calc(100vh-theme(spacing.32))]">
+          <div className="flex flex-col md:flex-row gap-16 p-8 md:p-16 flex-1">
+            {/* Left Column */}
+            <div className="flex-1 border-r-0 md:border-r border-primary md:pr-16 flex flex-col justify-center">
+              <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tighter mb-12 max-w-md leading-tight">
+                I'm always open to discussing new exciting opportunities.
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-4 max-w-lg">
+                {[
+                  "Solid trust", "Team player", 
+                  "Result focused", "Independent", 
+                  "Efficient", "100% remote"
+                ].map((text, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="bg-primary rounded-none text-on-primary p-1 flex-shrink-0">
+                      <Check className="w-4 h-4" strokeWidth={3} />
+                    </div>
+                    <span className="font-body text-primary text-lg">{text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Right Column */}
+            <div className="flex-1 flex flex-col justify-center">
+              <a href="mailto:felipelohr2@gmail.com" className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary border-b-[4px] border-dotted border-primary hover:bg-primary hover:text-on-primary transition-colors inline-block pb-2 mb-16 self-start">
+                felipelohr2@gmail.com
+              </a>
+              
+              <div className="flex flex-col gap-6">
+                <a href="/resume.pdf" target="_blank" className="flex items-center gap-4 group w-fit">
+                  <ArrowDownToLine className="w-5 h-5 text-secondary group-hover:text-primary transition-colors" />
+                  <span className="font-body text-lg border-b border-transparent group-hover:border-primary transition-colors">Download resume</span>
+                </a>
+                <a href="https://www.linkedin.com/in/felipe-lohr/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group w-fit">
+                  <Globe className="w-5 h-5 text-secondary group-hover:text-primary transition-colors" />
+                  <span className="font-body text-lg border-b border-transparent group-hover:border-primary transition-colors">LinkedIn</span>
+                </a>
+                <a href="https://github.com/lohr-1" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group w-fit">
+                  <GitBranch className="w-5 h-5 text-secondary group-hover:text-primary transition-colors" />
+                  <span className="font-body text-lg border-b border-transparent group-hover:border-primary transition-colors">GitHub</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Footer Area from Print */}
+          <div className="border-t border-primary p-8 md:p-16 flex flex-col gap-12">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 font-body text-secondary text-sm">
+              <div className="flex flex-wrap gap-8">
+                <a href="#projects" className="hover:text-primary transition-colors border-b border-transparent hover:border-primary">Work</a>
+                <a href="/resume.pdf" target="_blank" className="hover:text-primary transition-colors border-b border-transparent hover:border-primary flex items-center gap-2">
+                  <ArrowDownToLine className="w-3 h-3" /> Download resume
+                </a>
+              </div>
+              <div>© {new Date().getFullYear()} Felipe Lohr</div>
+            </div>
+          </div>
         </RevealBlock>
       </section>
 
