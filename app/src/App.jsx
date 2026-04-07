@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Layout from './components/Layout';
+import IntroBeams from './components/IntroBeams';
+import { AnimatePresence, motion } from 'framer-motion';
 import Button from './components/Button';
 import Input from './components/Input';
 import Card from './components/Card';
 import RevealBlock from './components/RevealBlock';
 import { ArrowDown, PenTool, Code, Terminal, GitBranch, Server, Smartphone, Globe, Cloud, LayoutPanelLeft, Layout as LayoutIcon, Check, ArrowDownToLine } from 'lucide-react';
+import ScrollVelocity from './components/ScrollVelocity';
 
 const tools = [
   { name: 'Figma', icon: <PenTool className="w-8 h-8" /> },
@@ -28,6 +31,8 @@ const skills = [
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
+  const [textExiting, setTextExiting] = useState(false);
 
   useEffect(() => {
     const main = document.getElementById('main-scroll');
@@ -39,8 +44,41 @@ export default function App() {
   }, []);
 
   return (
-    <Layout>
-      {/* 1. GENERAL (Hero) */}
+    <>
+      <AnimatePresence>
+        {showIntro && (
+          <motion.div 
+            key="intro"
+            className="fixed inset-0 z-[100] bg-transparent flex items-center justify-center pointer-events-none"
+            exit={{ opacity: 0, pointerEvents: "none" }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div 
+              className="absolute z-10 flex flex-col items-center justify-center font-display text-white pointer-events-none mix-blend-difference"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={textExiting 
+                ? { opacity: 0, y: 120, scale: 0.95 } 
+                : { opacity: 1, y: 0, scale: 1 }
+              }
+              transition={textExiting 
+                ? { duration: 0.8, ease: [0.65, 0, 0.35, 1] } 
+                : { duration: 1 }
+              }
+            >
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">FELIPE LOHR.</h1>
+              <p className="font-body text-sm md:text-lg tracking-widest uppercase">System Initialization</p>
+            </motion.div>
+            
+            <IntroBeams 
+              onComplete={() => setShowIntro(false)} 
+              onExitStart={() => setTextExiting(true)}
+              durationBeforeExit={2000} 
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <Layout>
+        {/* 1. GENERAL (Hero) */}
       <section id="general" className="relative min-h-screen border-b border-primary p-8 md:p-16 flex flex-col md:flex-row gap-8 justify-between items-start pt-24 md:pt-16">
         <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 transition-opacity duration-300 ${isScrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
           <ArrowDown className="w-10 h-10 animate-bounce text-primary" strokeWidth={2.5} />
@@ -79,10 +117,13 @@ export default function App() {
              </h2>
              <div className="font-body text-primary text-lg space-y-6 leading-relaxed max-w-xl">
                <p>
-                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at erat ut dolor dictum vehicula sed in turpis. Aenean aliquet interdum dolor, et laoreet elit sagittis sed. 
+                 I am a UX/UI Designer and Software Developer dedicated to crafting digital products that bridge visual clarity, functional logic, and a deep focus on user experience. Moving seamlessly between interface design, prototyping, flow architecture, and engineering, I approach every project with a holistic perspective—from initial concept to final execution.
                </p>
                <p>
-                 Suspendisse vel efficitur dui, ac hendrerit est. Sed fringilla nisi at justo congue, sodales mattis erat venenatis. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                 I am particularly passionate about building solutions that go beyond visual excellence to achieve total coherence across product strategy, usability, and technical feasibility. This intersection of design precision and structured development defines my analytical process and shapes every decision I make.
+               </p>
+               <p>
+                 In my portfolio, you will find projects that reflect this intentionality: purposeful interfaces, meticulous attention to detail, and a commitment to refining complex requirements into simple, functional, and consistent experiences.
                </p>
              </div>
           </RevealBlock>
@@ -98,7 +139,7 @@ export default function App() {
       </section>
 
       {/* 3. PROJECTS */}
-      <section id="projects" className="min-h-screen border-b border-primary flex flex-col pb-16">
+      <section id="projects" className="min-h-screen border-b border-primary flex flex-col">
         <div className="sticky top-0 z-20 bg-background border-b border-primary">
           <RevealBlock className="p-8 md:p-16 pb-8">
             <h3 className="font-display text-2xl font-bold tracking-tight uppercase">02 // Selected Projects</h3>
@@ -108,34 +149,34 @@ export default function App() {
         <div className="flex flex-col">
           <RevealBlock delay={0.1}>
             <Card 
-              title="The Dog API" 
-              stat="Full Stack" 
-              description="[MOCKUP TEXT] A complete full-stack web application designed to consume dog-related data, featuring detailed breed information and dynamic image rendering." 
+              title="The Dog API Platform" 
+              stat="Full Stack · Systems" 
+              description="Fragmented and poorly documented domain data often stalls development in niche categories. I built a centralized platform that normalizes and delivers high-performance canine data, providing a robust foundation for pet-sector digital products." 
               image="https://picsum.photos/seed/dogapi/800/400" 
               link="https://github.com/lohr-1/thedogapi"
             />
           </RevealBlock>
           <RevealBlock delay={0.2}>
             <Card 
-              title="Gestão de Estoque" 
-              stat="In Progress · Management" 
-              description="[MOCKUP TEXT] Sistema robusto aplicado para a gestão e controle de estoque, focando em usabilidade e performance para logística empresarial." 
+              title="Inventory Automation" 
+              stat="In Progress · Logistics" 
+              description="Manual inventory tracking in SMBs is prone to data drift and costly stock-outs. This system automates the auditing cycle, providing real-time visibility and predictive alerts to optimize supply chains and eliminate entry errors." 
               image="https://picsum.photos/seed/stock/800/400" 
             />
           </RevealBlock>
           <RevealBlock delay={0.3}>
             <Card 
-              title="Task Manager & Moodle" 
-              stat="In Progress · Education API" 
-              description="[MOCKUP TEXT] Task manager dedicado a professores universitários, com integração nativa e bidirecional com a API do Moodle." 
+              title="LMS Synchronizer" 
+              stat="In Progress · API Integration" 
+              description="Educators face severe administrative burnout due to data duplication across fragmented tools. I am developing a middleware that bidirectionally syncs task states with the Moodle API, unifying the academic workflow." 
               image="https://picsum.photos/seed/task/800/400" 
             />
           </RevealBlock>
           <RevealBlock delay={0.4}>
             <Card 
-              title="Universidade Sistema" 
-              stat="In Progress · Core System" 
-              description="[MOCKUP TEXT] Aplicação de gestão centralizada construída sob medida para a própria administração das rotinas da universidade." 
+              title="Campus Nexus" 
+              stat="In Progress · Core Infrastructure" 
+              description="Fragmented legacy systems at universities often result in communication silos and delayed admin cycles. This project is a bespoke central hub designed to unify campus routines and provide a single source of truth for institutional data." 
               image="https://picsum.photos/seed/uni/800/400" 
             />
           </RevealBlock>
@@ -150,15 +191,15 @@ export default function App() {
           </RevealBlock>
         </div>
         
-        <div className="flex flex-col -mt-[1px]">
+        <div className="flex flex-col">
            {/* Skills Block */}
            <div>
               <RevealBlock className="p-8 border-b border-primary bg-surface-container-low font-label text-xs tracking-widest uppercase">
                 Languages & Frameworks
               </RevealBlock>
-              <div className="grid grid-cols-2 lg:grid-cols-4">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-[1px] bg-primary border-b border-primary">
                  {skills.map((skill, index) => (
-                    <RevealBlock key={skill.name} delay={index * 0.05} className="col-span-1 border-b border-primary border-r [&:nth-child(2n)]:border-r-0 lg:[&:nth-child(2n)]:border-r lg:[&:nth-child(4n)]:border-r-0 aspect-square sm:aspect-auto sm:h-64 flex flex-col items-center justify-center p-8 gap-4 hover:bg-primary hover:text-on-primary transition-colors duration-150">
+                    <RevealBlock key={skill.name} delay={index * 0.05} className="bg-background col-span-1 aspect-square sm:aspect-auto sm:h-64 flex flex-col items-center justify-center p-8 gap-4 hover:bg-primary hover:text-on-primary transition-colors duration-150">
                        {skill.icon}
                        <span className="font-label text-xs uppercase tracking-widest text-center">{skill.name}</span>
                     </RevealBlock>
@@ -171,15 +212,15 @@ export default function App() {
               <RevealBlock className="p-8 border-b border-primary bg-surface-container-low font-label text-xs tracking-widest uppercase">
                 Software & Platforms
               </RevealBlock>
-              <div className="grid grid-cols-2 lg:grid-cols-4">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-[1px] bg-primary border-b border-primary">
                  {tools.map((tool, index) => (
-                    <RevealBlock key={tool.name} delay={index * 0.05} className="col-span-1 border-b border-primary border-r [&:nth-child(2n)]:border-r-0 lg:[&:nth-child(2n)]:border-r lg:[&:nth-child(4n)]:border-r-0 aspect-square sm:aspect-auto sm:h-64 flex flex-col items-center justify-center p-8 gap-4 hover:bg-primary hover:text-on-primary transition-colors duration-150">
+                    <RevealBlock key={tool.name} delay={index * 0.05} className="bg-background col-span-1 aspect-square sm:aspect-auto sm:h-64 flex flex-col items-center justify-center p-8 gap-4 hover:bg-primary hover:text-on-primary transition-colors duration-150">
                        {tool.icon}
                        <span className="font-label text-xs uppercase tracking-widest text-center">{tool.name}</span>
                     </RevealBlock>
                  ))}
-                 <div className="col-span-1 border-b border-primary border-r sm:h-64 hidden lg:block"></div>
-                 <div className="col-span-1 border-b border-primary sm:h-64 hidden lg:block"></div>
+                 <div className="bg-background col-span-1 sm:h-64 hidden lg:block"></div>
+                 <div className="bg-background col-span-1 sm:h-64 hidden lg:block"></div>
               </div>
            </div>
         </div>
@@ -191,29 +232,46 @@ export default function App() {
         <RevealBlock className="flex flex-col justify-between h-full min-h-[calc(100vh-theme(spacing.16))] md:min-h-[calc(100vh-theme(spacing.32))]">
           <div className="flex flex-col md:flex-row gap-16 p-8 md:p-16 flex-1">
             {/* Left Column */}
-            <div className="flex-1 border-r-0 md:border-r border-primary md:pr-16 flex flex-col justify-center">
+            <div className="flex-1 min-w-0 border-r-0 md:border-r border-primary md:pr-16 flex flex-col justify-center">
               <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tighter mb-12 max-w-md leading-tight">
                 I'm always open to discussing new exciting opportunities.
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-4 max-w-lg">
-                {[
-                  "Solid trust", "Team player", 
-                  "Result focused", "Independent", 
-                  "Efficient", "100% remote"
-                ].map((text, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <div className="bg-primary rounded-none text-on-primary p-1 flex-shrink-0">
-                      <Check className="w-4 h-4" strokeWidth={3} />
+              <div className="w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+                <ScrollVelocity
+                  velocity={40}
+                  texts={[
+                    <div className="flex gap-8 mr-8">
+                      {[
+                        "Solid trust", "Team player", "Result focused"
+                      ].map((text, i) => (
+                        <div key={i} className="flex items-center gap-4">
+                          <div className="bg-primary rounded-none text-on-primary p-2 flex-shrink-0">
+                            <Check className="w-6 h-6" strokeWidth={3} />
+                          </div>
+                          <span className="font-body text-primary text-3xl font-bold whitespace-nowrap">{text}</span>
+                        </div>
+                      ))}
+                    </div>,
+                    <div className="flex gap-8 mr-8 mt-6">
+                      {[
+                        "Independent", "Efficient", "100% remote"
+                      ].map((text, i) => (
+                        <div key={i} className="flex items-center gap-4">
+                          <div className="bg-primary rounded-none text-on-primary p-2 flex-shrink-0">
+                            <Check className="w-6 h-6" strokeWidth={3} />
+                          </div>
+                          <span className="font-body text-primary text-3xl font-bold whitespace-nowrap">{text}</span>
+                        </div>
+                      ))}
                     </div>
-                    <span className="font-body text-primary text-lg">{text}</span>
-                  </div>
-                ))}
+                  ]}
+                />
               </div>
             </div>
             
             {/* Right Column */}
             <div className="flex-1 flex flex-col justify-center">
-              <a href="mailto:felipelohr2@gmail.com" className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary border-b-[4px] border-dotted border-primary hover:bg-primary hover:text-on-primary transition-colors inline-block pb-2 mb-16 self-start">
+              <a href="mailto:felipelohr2@gmail.com" className="font-display text-[6.5vw] sm:text-3xl md:text-5xl lg:text-6xl font-bold text-primary border-b-[3px] border-dotted border-primary hover:bg-primary hover:text-on-primary transition-colors inline-block pb-2 mb-16 self-start whitespace-nowrap">
                 felipelohr2@gmail.com
               </a>
               
@@ -236,19 +294,19 @@ export default function App() {
 
           {/* Footer Area from Print */}
           <div className="border-t border-primary p-8 md:p-16 flex flex-col gap-12">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 font-body text-secondary text-sm">
-              <div className="flex flex-wrap gap-8">
+            <div className="flex flex-row justify-between items-center w-full font-body text-secondary text-xs sm:text-sm">
+              <div className="flex items-center gap-4 sm:gap-8">
                 <a href="#projects" className="hover:text-primary transition-colors border-b border-transparent hover:border-primary">Work</a>
                 <a href="/resume.pdf" target="_blank" className="hover:text-primary transition-colors border-b border-transparent hover:border-primary flex items-center gap-2">
-                  <ArrowDownToLine className="w-3 h-3" /> Download resume
+                  <ArrowDownToLine className="w-3 h-3" /> <span className="hidden sm:inline">Download </span>Resume
                 </a>
               </div>
-              <div>© {new Date().getFullYear()} Felipe Lohr</div>
+              <div className="text-right">© {new Date().getFullYear()}<span className="hidden sm:inline"> Felipe Lohr</span></div>
             </div>
           </div>
         </RevealBlock>
       </section>
-
     </Layout>
+    </>
   );
 }

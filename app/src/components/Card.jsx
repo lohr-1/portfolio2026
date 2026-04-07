@@ -87,14 +87,14 @@ export default function Card({ title, stat, description, image, align = 'left', 
 
   const content = (
     <div 
-      className="border border-primary bg-surface flex flex-col sm:flex-row items-stretch -mt-[1px] relative z-10 transition-none w-full h-full overflow-hidden group cursor-pointer"
+      className="border-b border-primary bg-surface flex flex-col sm:flex-row items-stretch relative z-10 transition-none w-full h-full overflow-hidden group cursor-pointer"
       ref={itemRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <div className="flex flex-col sm:flex-row w-full relative z-10 bg-surface group-hover:opacity-0 transition-opacity duration-300">
         {image && (
-          <div className="w-full sm:w-1/3 border-b sm:border-r border-primary filter grayscale overflow-hidden">
+          <div className="w-full sm:w-1/3 border-b sm:border-b-0 sm:border-r border-primary filter grayscale overflow-hidden">
             <img src={image} alt={title} className="w-full h-full object-cover aspect-square sm:aspect-auto" />
           </div>
         )}
