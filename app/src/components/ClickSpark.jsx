@@ -135,11 +135,23 @@ const ClickSpark = ({
     }
 
     let calculatedColor = sparkColor;
-    const match = bgColor.match(/\d+/g);
-    if (match && match.length >= 3) {
-      const [r, g, b] = match.map(Number);
-      const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
-      calculatedColor = luminance < 128 ? '#ffffff' : '#000000';
+    if (bgColor.includes('oklch')) {
+      const match = bgColor.match(/oklch\(\s*([\d.]+)(%?)/);
+      if (match) {
+        let l = parseFloat(match[1]);
+        if (match[2] === '%') l = l / 100;
+        calculatedColor = l < 0.6 ? '#ffffff' : '#000000';
+      }
+    } else {
+      const rgbMatch = bgColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+      if (rgbMatch) {
+        const [_, r, g, b] = rgbMatch.map(Number);
+        const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
+        calculatedColor = luminance < 128 ? '#ffffff' : '#000000';
+      } else {
+        const isDark = document.documentElement.classList.contains('dark') || document.documentElement.getAttribute('data-theme') === 'dark';
+        calculatedColor = isDark ? '#ffffff' : '#000000';
+      }
     }
 
     const newSparks = Array.from({ length: sparkCount }, (_, i) => ({

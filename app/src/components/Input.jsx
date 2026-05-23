@@ -7,7 +7,7 @@ export default function Input({ label, type = 'text', placeholder }) {
       <input 
         type={type} 
         placeholder={placeholder}
-        className="w-full bg-transparent border-b border-primary py-2 font-body text-primary focus:outline-none focus:bg-surface-container-highest transition-none placeholder:text-outline"
+        className="w-full bg-transparent border-b border-divider py-2 font-body text-primary focus:outline-none focus:bg-surface-container-highest transition-none placeholder:text-outline"
       />
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 
-export default function Card({ title, stat, description, image, align = 'left', link }) {
+export default function Card({ title, stat, description, image, align = 'left', link, onClick }) {
   const itemRef = useRef(null);
   const marqueeRef = useRef(null);
   const marqueeInnerRef = useRef(null);
@@ -85,22 +85,30 @@ export default function Card({ title, stat, description, image, align = 'left', 
       .to(marqueeInnerRef.current, { y: edge === 'top' ? '101%' : '-101%' }, 0);
   };
 
+  const handleClick = (ev) => {
+    if (onClick) {
+      ev.preventDefault();
+      onClick(ev);
+    }
+  };
+
   const content = (
     <div 
-      className="border border-primary bg-surface flex flex-col sm:flex-row items-stretch -mt-[1px] relative z-10 transition-none w-full h-full overflow-hidden group cursor-pointer"
+      className="border-b border-divider bg-surface flex flex-col sm:flex-row items-stretch relative z-10 transition-none w-full h-full overflow-hidden group cursor-pointer"
       ref={itemRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
     >
       <div className="flex flex-col sm:flex-row w-full relative z-10 bg-surface group-hover:opacity-0 transition-opacity duration-300">
         {image && (
-          <div className="w-full sm:w-1/3 border-b sm:border-r border-primary filter grayscale overflow-hidden">
+          <div className="w-full sm:w-1/3 border-b sm:border-r border-divider filter grayscale overflow-hidden">
             <img src={image} alt={title} className="w-full h-full object-cover aspect-square sm:aspect-auto" />
           </div>
         )}
         <div className={`p-8 flex flex-col justify-center flex-1 ${align === 'right' ? 'text-right' : 'text-left'}`}>
           <h3 className="font-display text-4xl tracking-tighter font-bold mb-4">{title}</h3>
-          {stat && <p className="font-display text-xl text-secondary mb-4">{stat}</p>}
+          {stat && <p className="font-display text-xl text-outline mb-4">{stat}</p>}
           <p className="font-body text-primary leading-relaxed">{description}</p>
         </div>
       </div>
@@ -126,12 +134,12 @@ export default function Card({ title, stat, description, image, align = 'left', 
     </div>
   );
 
-  return link ? (
+  return link && !onClick ? (
     <a href={link} target="_blank" rel="noopener noreferrer" className="block w-full relative z-10 hover:z-20">
       {content}
     </a>
   ) : (
-    <div className="block w-full relative z-10 hover:z-20">
+    <div onClick={handleClick} className="block w-full relative z-10 hover:z-20">
       {content}
     </div>
   );
