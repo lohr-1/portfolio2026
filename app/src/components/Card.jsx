@@ -63,6 +63,7 @@ export default function Card({ title, stat, description, image, align = 'left', 
   }, [title, image, repetitions, speed]);
 
   const handleMouseEnter = (ev) => {
+    if (window.matchMedia && !window.matchMedia('(hover: hover)').matches) return;
     if (!itemRef.current || !marqueeRef.current || !marqueeInnerRef.current) return;
     const rect = itemRef.current.getBoundingClientRect();
     const edge = findClosestEdge(ev.clientX - rect.left, ev.clientY - rect.top, rect.width, rect.height);
@@ -75,6 +76,7 @@ export default function Card({ title, stat, description, image, align = 'left', 
   };
 
   const handleMouseLeave = (ev) => {
+    if (window.matchMedia && !window.matchMedia('(hover: hover)').matches) return;
     if (!itemRef.current || !marqueeRef.current || !marqueeInnerRef.current) return;
     const rect = itemRef.current.getBoundingClientRect();
     const edge = findClosestEdge(ev.clientX - rect.left, ev.clientY - rect.top, rect.width, rect.height);
@@ -100,7 +102,7 @@ export default function Card({ title, stat, description, image, align = 'left', 
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
     >
-      <div className="flex flex-col sm:flex-row w-full relative z-10 bg-surface group-hover:opacity-0 transition-opacity duration-300">
+      <div className="flex flex-col sm:flex-row w-full relative z-10 bg-surface [@media(hover:hover)]:group-hover:opacity-0 transition-opacity duration-300">
         {image && (
           <div className="w-full sm:w-1/3 border-b sm:border-r border-divider filter grayscale overflow-hidden">
             <img src={image} alt={title} className="w-full h-full object-cover aspect-square sm:aspect-auto" />

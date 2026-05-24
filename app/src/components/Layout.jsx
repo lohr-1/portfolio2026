@@ -22,8 +22,8 @@ export default function Layout({ children }) {
   ];
   
   const socialItems = [
-    { label: 'LINKEDIN ↗', link: 'https://www.linkedin.com/in/felipe-lohr/' },
-    { label: 'GITHUB ↗', link: 'https://github.com/lohr-1' }
+    { label: 'LINKEDIN ↗\uFE0E', link: 'https://www.linkedin.com/in/felipe-lohr/' },
+    { label: 'GITHUB ↗\uFE0E', link: 'https://github.com/lohr-1' }
   ];
 
   return (
@@ -41,7 +41,7 @@ export default function Layout({ children }) {
             colors={menuColors}
           />
         </div>
-        <main id="main-scroll" className="flex-1 overflow-y-auto w-full relative scroll-smooth pt-20 md:pt-0">
+        <main id="main-scroll" className="flex-1 overflow-y-auto overflow-x-hidden w-full relative scroll-smooth pt-20 md:pt-0">
           <div className="absolute top-0 left-0 w-full h-[1px] bg-primary"></div>
           {children}
         </main>

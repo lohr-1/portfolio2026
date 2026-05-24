@@ -82,37 +82,37 @@ export default function ProjectModal({ project, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center py-0 bg-black/75 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex justify-end bg-black/75 backdrop-blur-sm">
       <style>{`
-        @keyframes modalSlideUp {
+        @keyframes offcanvasSlideIn {
           from {
-            transform: translateY(100%);
+            transform: translateX(100%);
           }
           to {
-            transform: translateY(0);
+            transform: translateX(0);
           }
         }
-        @keyframes modalSlideDown {
+        @keyframes offcanvasSlideOut {
           from {
-            transform: translateY(0);
+            transform: translateX(0);
           }
           to {
-            transform: translateY(100%);
+            transform: translateX(100%);
           }
         }
-        .animate-slide-up {
-          animation: modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        .animate-slide-in {
+          animation: offcanvasSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
-        .animate-slide-down {
-          animation: modalSlideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        .animate-slide-out {
+          animation: offcanvasSlideOut 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
       `}</style>
       {/* Backdrop click listener */}
       <div className="absolute inset-0 cursor-default" onClick={handleClose}></div>
 
-      {/* Modal Box */}
-      <div className={`relative w-full max-w-5xl bg-surface border-x border-divider flex flex-col z-10 rounded-none overflow-hidden h-screen max-h-screen text-primary ${
-        isClosing ? 'animate-slide-down' : 'animate-slide-up'
+      {/* Offcanvas Box */}
+      <div className={`relative w-full sm:w-[85vw] md:w-[75vw] lg:w-[65vw] xl:w-[1000px] bg-surface border-l border-divider flex flex-col z-10 overflow-hidden h-screen text-primary ${
+        isClosing ? 'animate-slide-out' : 'animate-slide-in'
       }`}>
         
         {/* Top Header Row with System Info & Close Button */}
