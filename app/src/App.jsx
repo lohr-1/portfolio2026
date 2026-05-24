@@ -172,11 +172,11 @@ export default function App() {
             </div>
           </RevealBlock>
 
-          <RevealBlock delay={0.2} className="flex flex-col justify-center border-l-0 lg:border-l border-divider pl-0 lg:pl-16 mt-16 lg:mt-0">
+          {/* Expertise Focus (Desktop only) */}
+          <RevealBlock delay={0.2} className="hidden sm:flex flex-col justify-center border-l-0 lg:border-l border-divider pl-0 lg:pl-16 mt-16 lg:mt-0">
             <h4 className="font-display text-xl font-bold uppercase tracking-wider mb-6">Expertise Focus</h4>
             
-            {/* Desktop View: Grid */}
-            <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
                 "Complex flow & journey architecture",
                 "Modular system design",
@@ -196,16 +196,6 @@ export default function App() {
                   <span className="font-body text-primary text-base">{item}</span>
                 </div>
               ))}
-            </div>
-
-            {/* Mobile View: ScrollVelocity */}
-            <div className="block sm:hidden -mx-8">
-              <ScrollVelocity
-                texts={["Complex flow & journey architecture • Modular system design • B2B SaaS platforms & interfaces • Analytical dashboards & metrics • Design systems & UI standards • Operational UX for internal tools • Multi-module product structures • Scalable user experience strategy • Functional behavior & UI states • Wireframes & functional documentation •"]} 
-                velocity={50} 
-                className="font-display text-2xl font-bold uppercase tracking-wider text-primary py-4"
-                numCopies={4}
-              />
             </div>
           </RevealBlock>
         </div>
