@@ -64,15 +64,22 @@ export default function ProjectModal({ project, onClose }) {
 
     const containerTop = container.scrollTop;
     const containerHeight = container.clientHeight;
+    const scrollHeight = container.scrollHeight;
     
+    // If we've scrolled to the absolute bottom, activate the last section
+    if (Math.ceil(containerTop + containerHeight) >= scrollHeight - 10) {
+      setActiveSection(sections[sections.length - 1].id);
+      return;
+    }
+
     let currentActive = 'visao-geral';
 
     for (const section of sections) {
       const element = document.getElementById(`modal-sec-${section.id}`);
       if (element) {
         const offsetTop = element.offsetTop - container.offsetTop;
-        // Check if the section is scrolled into view (with a threshold offset)
-        if (containerTop >= offsetTop - 40) {
+        // Trigger active state when the section title hits the top 40% of the screen
+        if (containerTop >= offsetTop - (containerHeight * 0.4)) {
           currentActive = section.id;
         }
       }
