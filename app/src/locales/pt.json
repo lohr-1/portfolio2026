@@ -1,0 +1,62 @@
+{
+  "translation": {
+    "hero": {
+      "status": "STATUS: ONLINE",
+      "overview": "VISÃO // ESTRUTURAL",
+      "role": "PRODUCT DESIGNER // UX/UI DESIGNER",
+      "coreFocus": "// FOCO PRINCIPAL",
+      "coreFocusDesc": "Projetando experiências digitais para plataformas SaaS complexas, traduzindo regras de negócios e fluxos operacionais em interfaces limpas, consistentes e escaláveis.",
+      "workTab": "01 // TRABALHO",
+      "workTitle": "4 Projetos Selecionados",
+      "workDesc": "Dashboards, sistemas de inventário e fluxos operacionais internos.",
+      "expTab": "02 // EXPERIÊNCIA",
+      "expTitle": "2 Anos Especializado",
+      "expDesc": "Construindo estruturas digitais e sistemas de design modulares escaláveis.",
+      "skillsTab": "03 // HABILIDADES",
+      "skillsTitle": "10+ Especialidades",
+      "skillsDesc": "De jornadas complexas a wireframes funcionais de produto.",
+      "scroll": "ROLAR"
+    },
+    "about": {
+      "sectionTitle": "SEC.01 // SOBRE MIM",
+      "bioData": "[DADOS.BIO]",
+      "title": "DESIGN SISTEMÁTICO PARA PLATAFORMAS COMPLEXAS.",
+      "p1": "Sou Product Designer e Especialista em UX/UI com 2 anos de experiência focado em plataformas SaaS B2B complexas. Especializo-me no design estrutural de sistemas digitais corporativos, otimizando fluxos operacionais, jornadas internas de usuários e interfaces de gestão organizacional.",
+      "p2": "Meu trabalho vai além do design visual: conecto experiência do usuário, arquitetura de informação detalhada, regras de negócios e estratégia de produto para construir sistemas escaláveis, consistentes e operacionalmente viáveis.",
+      "p3": "Me destaco em ambientes ambíguos, estruturando requisitos dispersos de usuários e traduzindo processos de negócios de alta complexidade em ferramentas digitais limpas e altamente legíveis.",
+      "expertiseTitle": "Foco de Especialidade",
+      "expertise": [
+        "Arquitetura de fluxos complexos",
+        "Design de sistemas modulares",
+        "Plataformas SaaS B2B",
+        "Dashboards analíticos",
+        "Design Systems",
+        "UX Operacional",
+        "Estruturas multi-módulo",
+        "Estratégia de experiência escalável",
+        "Comportamento e estados de UI",
+        "Wireframes funcionais"
+      ]
+    },
+    "projects": {
+      "sectionTitle": "SEC.02 // PROJETOS DESTAQUE",
+      "caseStudies": "[CASES]"
+    },
+    "skills": {
+      "sectionTitle": "SEC.03 // HABILIDADES & FERRAMENTAS",
+      "techStack": "[STACK.TECH]",
+      "designSkills": "Habilidades de Product Design",
+      "designTools": "Ferramentas & Plataformas"
+    },
+    "contact": {
+      "title": "Estou sempre aberto a conversar sobre novas oportunidades.",
+      "qualities": [
+        "Confiança", "Trabalho em equipe",
+        "Foco em resultados", "Independente",
+        "Eficiente", "100% remoto"
+      ],
+      "downloadResume": "Baixar currículo",
+      "work": "Trabalho"
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from 'next-themes';
+import { useTranslation } from 'react-i18next';
 import Layout from './components/Layout';
 import Button from './components/Button';
 import Input from './components/Input';
@@ -47,6 +48,7 @@ const skills = [
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeProject, setActiveProject] = useState(null);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const main = document.getElementById('main-scroll');
@@ -57,22 +59,36 @@ export default function App() {
     return () => main?.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const toggleLanguage = () => {
+    const nextLang = i18n.language.startsWith('pt') ? 'en' : 'pt';
+    i18n.changeLanguage(nextLang);
+  };
+
   return (
     <ThemeProvider attribute="class">
       <Layout>
+
+        {/* Language Toggle Button */}
+        <div className="absolute top-8 left-8 z-30">
+          <button 
+            onClick={toggleLanguage}
+            className="font-label text-xs font-bold text-primary uppercase tracking-widest px-3 py-1.5 border border-divider hover:bg-primary hover:text-on-primary transition-colors cursor-pointer"
+          >
+            {i18n.language.startsWith('pt') ? 'EN' : 'PT'}
+          </button>
+        </div>
 
         {/* 1. GENERAL (Hero) */}
         <section id="general" className="relative min-h-screen border-b border-divider flex flex-col justify-between overflow-hidden">
 
           {/* Editorial Structural Markers */}
         <div className="absolute top-8 right-8 flex flex-col items-end gap-1 font-label text-[10px] text-outline uppercase tracking-widest pointer-events-none select-none z-0">
-          <span>[SYS] PORTFOLIO // 2026</span>
-          <span>STATUS: ONLINE</span>
+          <span>[SYS] PORTFOLIO // {new Date().getFullYear()}</span>
+          <span>{t('hero.status')}</span>
         </div>
         <div className="absolute top-1/2 right-8 -translate-y-1/2 origin-right font-label text-[10px] text-outline uppercase tracking-widest pointer-events-none select-none z-0 hidden lg:flex" style={{ writingMode: 'vertical-rl' }}>
-          STRUCTURAL // OVERVIEW
+          {t('hero.overview')}
         </div>
-
 
         {/* Main Hero Area */}
         <div className="relative z-10 flex-1 grid grid-cols-1 lg:grid-cols-3 items-stretch w-full">
@@ -82,16 +98,16 @@ export default function App() {
                 FELIPE<br />LOHR.
               </h2>
               <span className="font-label uppercase tracking-widest text-xs font-bold text-primary mt-6 block px-1 py-1 border border-divider bg-surface w-fit">
-                PRODUCT DESIGNER // UX/UI DESIGNER
+                {t('hero.role')}
               </span>
             </RevealBlock>
           </div>
 
           <div className="lg:col-span-1 border-t lg:border-t-0 lg:border-l border-divider p-8 md:p-16 flex flex-col justify-center">
             <RevealBlock delay={0.2} className="max-w-md">
-              <span className="font-label uppercase tracking-widest text-xs text-outline block mb-4">// CORE FOCUS</span>
+              <span className="font-label uppercase tracking-widest text-xs text-outline block mb-4">{t('hero.coreFocus')}</span>
               <p className="font-body text-lg md:text-xl text-primary leading-relaxed">
-                Designing digital experiences for complex SaaS platforms, translating business rules and operational workflows into clean, consistent, and scalable interfaces.
+                {t('hero.coreFocusDesc')}
               </p>
             </RevealBlock>
           </div>
@@ -104,10 +120,10 @@ export default function App() {
             className="group p-8 border-b lg:border-b-0 lg:border-r border-divider flex flex-col justify-between hover:bg-primary hover:text-on-primary transition-all duration-300 cursor-pointer select-none"
           >
             <RevealBlock delay={0.3} className="flex flex-col gap-8 h-full justify-between">
-              <div className="font-label text-xs uppercase tracking-widest text-outline group-hover:text-on-primary/60 transition-colors">01 // WORK</div>
+              <div className="font-label text-xs uppercase tracking-widest text-outline group-hover:text-on-primary/60 transition-colors">{t('hero.workTab')}</div>
               <div>
-                <div className="font-display text-3xl font-bold tracking-tight mb-2 uppercase">4 Selected Projects</div>
-                <div className="font-body text-sm text-outline group-hover:text-on-primary/80 transition-colors">Dashboards, inventory systems, and internal operational flows.</div>
+                <div className="font-display text-3xl font-bold tracking-tight mb-2 uppercase">{t('hero.workTitle')}</div>
+                <div className="font-body text-sm text-outline group-hover:text-on-primary/80 transition-colors">{t('hero.workDesc')}</div>
               </div>
             </RevealBlock>
           </div>
@@ -117,10 +133,10 @@ export default function App() {
             className="group p-8 border-b lg:border-b-0 border-divider flex flex-col justify-between hover:bg-primary hover:text-on-primary transition-all duration-300 cursor-pointer select-none"
           >
             <RevealBlock delay={0.4} className="flex flex-col gap-8 h-full justify-between">
-              <div className="font-label text-xs uppercase tracking-widest text-outline group-hover:text-on-primary/60 transition-colors">02 // EXPERIENCE</div>
+              <div className="font-label text-xs uppercase tracking-widest text-outline group-hover:text-on-primary/60 transition-colors">{t('hero.expTab')}</div>
               <div>
-                <div className="font-display text-3xl font-bold tracking-tight mb-2 uppercase">2 Years Specialized</div>
-                <div className="font-body text-sm text-outline group-hover:text-on-primary/80 transition-colors">Building digital structures and scalable modular design systems.</div>
+                <div className="font-display text-3xl font-bold tracking-tight mb-2 uppercase">{t('hero.expTitle')}</div>
+                <div className="font-body text-sm text-outline group-hover:text-on-primary/80 transition-colors">{t('hero.expDesc')}</div>
               </div>
             </RevealBlock>
           </div>
@@ -130,10 +146,10 @@ export default function App() {
             className="group p-8 lg:border-l border-divider flex flex-col justify-between hover:bg-primary hover:text-on-primary transition-all duration-300 cursor-pointer select-none"
           >
             <RevealBlock delay={0.5} className="flex flex-col gap-8 h-full justify-between">
-              <div className="font-label text-xs uppercase tracking-widest text-outline group-hover:text-on-primary/60 transition-colors">03 // CORE CAPABILITIES</div>
+              <div className="font-label text-xs uppercase tracking-widest text-outline group-hover:text-on-primary/60 transition-colors">{t('hero.skillsTab')}</div>
               <div>
-                <div className="font-display text-3xl font-bold tracking-tight mb-2 uppercase">10+ Key Specialties</div>
-                <div className="font-body text-sm text-outline group-hover:text-on-primary/80 transition-colors">From complex journeys to functional product wireframes.</div>
+                <div className="font-display text-3xl font-bold tracking-tight mb-2 uppercase">{t('hero.skillsTitle')}</div>
+                <div className="font-body text-sm text-outline group-hover:text-on-primary/80 transition-colors">{t('hero.skillsDesc')}</div>
               </div>
             </RevealBlock>
           </div>
@@ -141,7 +157,7 @@ export default function App() {
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-4 right-8 font-label text-[10px] uppercase tracking-widest text-outline flex items-center gap-2 pointer-events-none select-none hidden lg:flex z-20">
-          SCROLL <ArrowDown className="w-3 h-3 animate-bounce" />
+          {t('hero.scroll')} <ArrowDown className="w-3 h-3 animate-bounce" />
         </div>
       </section>
 
@@ -149,46 +165,29 @@ export default function App() {
       <section id="about" className="min-h-screen border-b border-divider flex flex-col">
         <div className="sticky top-0 z-20 bg-background border-b border-divider flex items-center justify-between p-8 md:p-16 pb-8">
           <RevealBlock>
-            <h3 className="font-display text-2xl font-bold tracking-tight uppercase">SEC.01 // ABOUT ME</h3>
+            <h3 className="font-display text-2xl font-bold tracking-tight uppercase">{t('about.sectionTitle')}</h3>
           </RevealBlock>
-          <span className="font-label text-[10px] text-outline uppercase tracking-widest hidden md:block select-none pointer-events-none">[BIO.DATA]</span>
+          <span className="font-label text-[10px] text-outline uppercase tracking-widest hidden md:block select-none pointer-events-none">{t('about.bioData')}</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 flex-1 p-8 md:p-16 pt-16 md:pt-16">
           <RevealBlock delay={0.1} className="flex flex-col justify-center">
             <h2 className="font-display text-5xl md:text-6xl font-bold tracking-tighter leading-none mb-8">
-              SYSTEMATIC DESIGN FOR COMPLEX PLATFORMS.
+              {t('about.title')}
             </h2>
             <div className="font-body text-primary text-lg space-y-6 leading-relaxed max-w-xl">
-              <p>
-                I am a Product Designer and UX/UI Specialist with 2 years of experience focusing on complex B2B SaaS platforms. I specialize in the structural design of enterprise digital systems, optimizing operational workflows, internal user flows, and organizational management interfaces.
-              </p>
-              <p>
-                My work goes beyond visual interface design: I connect user experience, detailed information architecture, business rules, and product strategy to construct scalable, consistent, and operationally viable systems.
-              </p>
-              <p>
-                I thrive in ambiguous environments, structuring scattered user requirements and translating high-complexity business processes into clean, highly readable digital tools.
-              </p>
+              <p>{t('about.p1')}</p>
+              <p>{t('about.p2')}</p>
+              <p>{t('about.p3')}</p>
             </div>
           </RevealBlock>
 
-          {/* Expertise Focus (Desktop only) */}
+          {/* Expertise Focus */}
           <RevealBlock delay={0.2} className="hidden sm:flex flex-col justify-center border-l-0 lg:border-l border-divider pl-0 lg:pl-16 mt-16 lg:mt-0">
-            <h4 className="font-display text-xl font-bold uppercase tracking-wider mb-6">Expertise Focus</h4>
+            <h4 className="font-display text-xl font-bold uppercase tracking-wider mb-6">{t('about.expertiseTitle')}</h4>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {[
-                "Complex flow & journey architecture",
-                "Modular system design",
-                "B2B SaaS platforms & interfaces",
-                "Analytical dashboards & metrics",
-                "Design systems & UI standards",
-                "Operational UX for internal tools",
-                "Multi-module product structures",
-                "Scalable user experience strategy",
-                "Functional behavior & UI states",
-                "Wireframes & functional documentation"
-              ].map((item, idx) => (
+              {t('about.expertise', { returnObjects: true }).map((item, idx) => (
                 <div key={idx} className="flex items-start gap-3">
                   <div className="bg-primary text-on-primary p-0.5 mt-1">
                     <Check className="w-3.5 h-3.5" strokeWidth={3} />
@@ -205,9 +204,9 @@ export default function App() {
       <section id="projects" className="min-h-screen border-b border-divider flex flex-col">
         <div className="sticky top-0 z-20 bg-background border-b border-divider flex items-center justify-between p-8 md:p-16 pb-8">
           <RevealBlock>
-            <h3 className="font-display text-2xl font-bold tracking-tight uppercase">SEC.02 // FEATURED PROJECTS</h3>
+            <h3 className="font-display text-2xl font-bold tracking-tight uppercase">{t('projects.sectionTitle')}</h3>
           </RevealBlock>
-          <span className="font-label text-[10px] text-outline uppercase tracking-widest hidden md:block select-none pointer-events-none">[CASE.STUDIES]</span>
+          <span className="font-label text-[10px] text-outline uppercase tracking-widest hidden md:block select-none pointer-events-none">{t('projects.caseStudies')}</span>
         </div>
 
         <div className="flex flex-col">
@@ -230,16 +229,16 @@ export default function App() {
       <section id="skills" className="min-h-screen border-b border-divider flex flex-col">
         <div className="sticky top-0 z-20 bg-background border-b border-divider flex items-center justify-between p-8 md:p-16 pb-8">
           <RevealBlock>
-            <h3 className="font-display text-2xl font-bold tracking-tight uppercase">SEC.03 // SKILLS & CAPABILITIES</h3>
+            <h3 className="font-display text-2xl font-bold tracking-tight uppercase">{t('skills.sectionTitle')}</h3>
           </RevealBlock>
-          <span className="font-label text-[10px] text-outline uppercase tracking-widest hidden md:block select-none pointer-events-none">[TECH.STACK]</span>
+          <span className="font-label text-[10px] text-outline uppercase tracking-widest hidden md:block select-none pointer-events-none">{t('skills.techStack')}</span>
         </div>
 
         <div className="flex flex-col">
           {/* Skills Block */}
           <div>
             <RevealBlock className="p-8 border-b border-divider bg-surface-container-low font-label text-xs tracking-widest uppercase">
-              Product Design Skills
+              {t('skills.designSkills')}
             </RevealBlock>
             <div className="grid grid-cols-2 lg:grid-cols-4">
               {skills.map((skill, index) => (
@@ -254,7 +253,7 @@ export default function App() {
           {/* Tools Block */}
           <div>
             <RevealBlock className="p-8 border-b border-divider bg-surface-container-low font-label text-xs tracking-widest uppercase">
-              Design Tools & Platforms
+              {t('skills.designTools')}
             </RevealBlock>
             <div className="grid grid-cols-2 lg:grid-cols-4">
               {tools.map((tool, index) => (
@@ -277,14 +276,10 @@ export default function App() {
             {/* Left Column */}
             <div className="flex-1 border-r-0 md:border-r border-divider md:pr-16 flex flex-col justify-center">
               <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tighter mb-12 max-w-md leading-tight">
-                I'm always open to discussing new exciting opportunities.
+                {t('contact.title')}
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-4 max-w-lg">
-                {[
-                  "Solid trust", "Team player",
-                  "Result focused", "Independent",
-                  "Efficient", "100% remote"
-                ].map((text, i) => (
+                {t('contact.qualities', { returnObjects: true }).map((text, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <div className="bg-primary rounded-none text-on-primary p-1 flex-shrink-0">
                       <Check className="w-4 h-4" strokeWidth={3} />
@@ -304,7 +299,7 @@ export default function App() {
               <div className="flex flex-col gap-6">
                 <a href="/resume.pdf" target="_blank" className="flex items-center gap-4 group w-fit">
                   <ArrowDownToLine className="w-5 h-5 text-outline group-hover:text-primary transition-colors" />
-                  <span className="font-body text-lg border-b border-transparent group-hover:border-divider transition-colors">Download resume</span>
+                  <span className="font-body text-lg border-b border-transparent group-hover:border-divider transition-colors">{t('contact.downloadResume')}</span>
                 </a>
                 <a href="https://www.linkedin.com/in/felipe-lohr/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group w-fit">
                   <Globe className="w-5 h-5 text-outline group-hover:text-primary transition-colors" />
@@ -322,9 +317,9 @@ export default function App() {
           <div className="border-t border-divider p-8 md:p-16 flex flex-col gap-12">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 font-body text-outline text-sm">
               <div className="flex flex-wrap gap-8">
-                <a href="#projects" className="hover:text-primary transition-colors border-b border-transparent hover:border-divider">Work</a>
+                <a href="#projects" className="hover:text-primary transition-colors border-b border-transparent hover:border-divider">{t('contact.work')}</a>
                 <a href="/resume.pdf" target="_blank" className="hover:text-primary transition-colors border-b border-transparent hover:border-divider flex items-center gap-2">
-                  <ArrowDownToLine className="w-3 h-3" /> Download resume
+                  <ArrowDownToLine className="w-3 h-3" /> {t('contact.downloadResume')}
                 </a>
               </div>
               <div>© {new Date().getFullYear()} Felipe Lohr</div>

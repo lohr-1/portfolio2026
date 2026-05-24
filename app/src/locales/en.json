@@ -1,0 +1,62 @@
+{
+  "translation": {
+    "hero": {
+      "status": "STATUS: ONLINE",
+      "overview": "STRUCTURAL // OVERVIEW",
+      "role": "PRODUCT DESIGNER // UX/UI DESIGNER",
+      "coreFocus": "// CORE FOCUS",
+      "coreFocusDesc": "Designing digital experiences for complex SaaS platforms, translating business rules and operational workflows into clean, consistent, and scalable interfaces.",
+      "workTab": "01 // WORK",
+      "workTitle": "4 Selected Projects",
+      "workDesc": "Dashboards, inventory systems, and internal operational flows.",
+      "expTab": "02 // EXPERIENCE",
+      "expTitle": "2 Years Specialized",
+      "expDesc": "Building digital structures and scalable modular design systems.",
+      "skillsTab": "03 // CORE CAPABILITIES",
+      "skillsTitle": "10+ Key Specialties",
+      "skillsDesc": "From complex journeys to functional product wireframes.",
+      "scroll": "SCROLL"
+    },
+    "about": {
+      "sectionTitle": "SEC.01 // ABOUT ME",
+      "bioData": "[BIO.DATA]",
+      "title": "SYSTEMATIC DESIGN FOR COMPLEX PLATFORMS.",
+      "p1": "I am a Product Designer and UX/UI Specialist with 2 years of experience focusing on complex B2B SaaS platforms. I specialize in the structural design of enterprise digital systems, optimizing operational workflows, internal user flows, and organizational management interfaces.",
+      "p2": "My work goes beyond visual interface design: I connect user experience, detailed information architecture, business rules, and product strategy to construct scalable, consistent, and operationally viable systems.",
+      "p3": "I thrive in ambiguous environments, structuring scattered user requirements and translating high-complexity business processes into clean, highly readable digital tools.",
+      "expertiseTitle": "Expertise Focus",
+      "expertise": [
+        "Complex flow & journey architecture",
+        "Modular system design",
+        "B2B SaaS platforms & interfaces",
+        "Analytical dashboards & metrics",
+        "Design systems & UI standards",
+        "Operational UX for internal tools",
+        "Multi-module product structures",
+        "Scalable user experience strategy",
+        "Functional behavior & UI states",
+        "Wireframes & functional documentation"
+      ]
+    },
+    "projects": {
+      "sectionTitle": "SEC.02 // FEATURED PROJECTS",
+      "caseStudies": "[CASE.STUDIES]"
+    },
+    "skills": {
+      "sectionTitle": "SEC.03 // SKILLS & CAPABILITIES",
+      "techStack": "[TECH.STACK]",
+      "designSkills": "Product Design Skills",
+      "designTools": "Design Tools & Platforms"
+    },
+    "contact": {
+      "title": "I'm always open to discussing new exciting opportunities.",
+      "qualities": [
+        "Solid trust", "Team player",
+        "Result focused", "Independent",
+        "Efficient", "100% remote"
+      ],
+      "downloadResume": "Download resume",
+      "work": "Work"
+    }
+  }
+}
