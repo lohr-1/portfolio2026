@@ -6,6 +6,7 @@ import Button from './components/Button';
 import Input from './components/Input';
 import Card from './components/Card';
 import RevealBlock from './components/RevealBlock';
+import StairPreloader from './components/StairPreloader';
 import { projectsData } from './data/projectsData';
 import ProjectModal from './components/ProjectModal';
 import ScrollVelocity from './components/ScrollVelocity';
@@ -59,24 +60,9 @@ export default function App() {
     return () => main?.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleLanguage = () => {
-    const nextLang = i18n.language.startsWith('pt') ? 'en' : 'pt';
-    i18n.changeLanguage(nextLang);
-  };
-
   return (
     <ThemeProvider attribute="class">
       <Layout>
-
-        {/* Language Toggle Button */}
-        <div className="absolute top-8 left-8 z-30">
-          <button 
-            onClick={toggleLanguage}
-            className="font-label text-xs font-bold text-primary uppercase tracking-widest px-3 py-1.5 border border-divider hover:bg-primary hover:text-on-primary transition-colors cursor-pointer"
-          >
-            {i18n.language.startsWith('pt') ? 'EN' : 'PT'}
-          </button>
-        </div>
 
         {/* 1. GENERAL (Hero) */}
         <section id="general" className="relative min-h-screen border-b border-divider flex flex-col justify-between overflow-hidden">
@@ -92,7 +78,7 @@ export default function App() {
 
         {/* Main Hero Area */}
         <div className="relative z-10 flex-1 grid grid-cols-1 lg:grid-cols-3 items-stretch w-full">
-          <div className="lg:col-span-2 p-8 md:p-16 flex flex-col justify-center">
+          <StairPreloader delay={0.1} direction="ltr" className="lg:col-span-2 p-8 md:p-16 flex flex-col justify-center">
             <RevealBlock className="pt-8 lg:pt-0">
               <h2 className="font-display text-6xl sm:text-7xl md:text-[9.5rem] font-bold tracking-tighter leading-[0.8] uppercase text-primary">
                 FELIPE<br />LOHR.
@@ -101,21 +87,23 @@ export default function App() {
                 {t('hero.role')}
               </span>
             </RevealBlock>
-          </div>
+          </StairPreloader>
 
-          <div className="lg:col-span-1 border-t lg:border-t-0 lg:border-l border-divider p-8 md:p-16 flex flex-col justify-center">
+          <StairPreloader delay={0.2} direction="ltr" className="lg:col-span-1 border-t lg:border-t-0 lg:border-l border-divider p-8 md:p-16 flex flex-col justify-center">
             <RevealBlock delay={0.2} className="max-w-md">
               <span className="font-label uppercase tracking-widest text-xs text-outline block mb-4">{t('hero.coreFocus')}</span>
               <p className="font-body text-lg md:text-xl text-primary leading-relaxed">
                 {t('hero.coreFocusDesc')}
               </p>
             </RevealBlock>
-          </div>
+          </StairPreloader>
         </div>
 
         {/* Stats & Actions Scaffold Grid */}
         <div className="relative z-10 w-full border-t border-divider grid grid-cols-1 lg:grid-cols-3 bg-background">
-          <div
+          <StairPreloader
+            delay={0.3}
+            direction="ttb"
             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             className="group p-8 border-b lg:border-b-0 lg:border-r border-divider flex flex-col justify-between hover:bg-primary hover:text-on-primary transition-all duration-300 cursor-pointer select-none"
           >
@@ -126,9 +114,11 @@ export default function App() {
                 <div className="font-body text-sm text-outline group-hover:text-on-primary/80 transition-colors">{t('hero.workDesc')}</div>
               </div>
             </RevealBlock>
-          </div>
+          </StairPreloader>
 
-          <div
+          <StairPreloader
+            delay={0.45}
+            direction="ttb"
             onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
             className="group p-8 border-b lg:border-b-0 border-divider flex flex-col justify-between hover:bg-primary hover:text-on-primary transition-all duration-300 cursor-pointer select-none"
           >
@@ -139,9 +129,11 @@ export default function App() {
                 <div className="font-body text-sm text-outline group-hover:text-on-primary/80 transition-colors">{t('hero.expDesc')}</div>
               </div>
             </RevealBlock>
-          </div>
+          </StairPreloader>
 
-          <div
+          <StairPreloader
+            delay={0.6}
+            direction="ttb"
             onClick={() => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' })}
             className="group p-8 lg:border-l border-divider flex flex-col justify-between hover:bg-primary hover:text-on-primary transition-all duration-300 cursor-pointer select-none"
           >
@@ -152,7 +144,7 @@ export default function App() {
                 <div className="font-body text-sm text-outline group-hover:text-on-primary/80 transition-colors">{t('hero.skillsDesc')}</div>
               </div>
             </RevealBlock>
-          </div>
+          </StairPreloader>
         </div>
 
         {/* Scroll Indicator */}

@@ -1,6 +1,7 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ThemeButton } from './ThemeButton';
+import StairPreloader from './StairPreloader';
 
 export const StaggeredMenu = ({
   position = 'right',
@@ -380,56 +381,62 @@ export const StaggeredMenu = ({
           })()}
         </div>
 
-        <header
-          className="staggered-menu-header absolute top-0 left-0 w-full flex items-center justify-between p-6 md:p-8 bg-background border-b border-primary pointer-events-none z-20"
-          aria-label="Main navigation header"
+        <StairPreloader
+          delay={0}
+          direction="ltr"
+          className="staggered-menu-header absolute top-0 left-0 w-full pointer-events-none z-20"
         >
-          <div className="sm-logo flex items-center select-none pointer-events-auto" aria-label="Logo">
-            {logoText && <h1 className="font-display font-bold text-3xl tracking-tighter cursor-pointer text-primary" onClick={() => document.getElementById('main-scroll')?.scrollTo({ top: 0, behavior: 'smooth' })}>{logoText}</h1>}
-          </div>
+          <header
+            className="w-full flex items-center justify-between p-6 md:p-8 bg-background border-b border-primary pointer-events-none"
+            aria-label="Main navigation header"
+          >
+            <div className="sm-logo flex items-center select-none pointer-events-auto" aria-label="Logo">
+              {logoText && <h1 className="font-display font-bold text-3xl tracking-tighter cursor-pointer text-primary" onClick={() => document.getElementById('main-scroll')?.scrollTo({ top: 0, behavior: 'smooth' })}>{logoText}</h1>}
+            </div>
 
-          <div className="flex items-center gap-4 pointer-events-auto">
-            <ThemeButton className="w-8 h-8 shrink-0" />
-            <button
-              ref={toggleBtnRef}
-              className="sm-toggle relative inline-flex items-center gap-[0.3rem] bg-transparent border-0 cursor-pointer font-label text-sm tracking-widest leading-none overflow-visible hover:text-outline transition-colors duration-150"
-              aria-label={open ? 'Close menu' : 'Open menu'}
-              aria-expanded={open}
-              aria-controls="staggered-menu-panel"
-              onClick={toggleMenu}
-              type="button"
-            >
-              <span
-                ref={textWrapRef}
-                className="sm-toggle-textWrap relative inline-block h-[1em] overflow-hidden whitespace-nowrap w-[var(--sm-toggle-width,auto)] min-w-[var(--sm-toggle-width,auto)]"
-                aria-hidden="true"
+            <div className="flex items-center gap-4 pointer-events-auto">
+              <ThemeButton className="w-8 h-8 shrink-0" />
+              <button
+                ref={toggleBtnRef}
+                className="sm-toggle relative inline-flex items-center gap-[0.3rem] bg-transparent border-0 cursor-pointer font-label text-sm tracking-widest leading-none overflow-visible hover:text-outline transition-colors duration-150"
+                aria-label={open ? 'Close menu' : 'Open menu'}
+                aria-expanded={open}
+                aria-controls="staggered-menu-panel"
+                onClick={toggleMenu}
+                type="button"
               >
-                <span ref={textInnerRef} className="sm-toggle-textInner flex flex-col leading-none">
-                  {textLines.map((l, i) => (
-                    <span className="sm-toggle-line block h-[1em] leading-none" key={i}>
-                      {l}
-                    </span>
-                  ))}
+                <span
+                  ref={textWrapRef}
+                  className="sm-toggle-textWrap relative inline-block h-[1em] overflow-hidden whitespace-nowrap w-[var(--sm-toggle-width,auto)] min-w-[var(--sm-toggle-width,auto)]"
+                  aria-hidden="true"
+                >
+                  <span ref={textInnerRef} className="sm-toggle-textInner flex flex-col leading-none">
+                    {textLines.map((l, i) => (
+                      <span className="sm-toggle-line block h-[1em] leading-none" key={i}>
+                        {l}
+                      </span>
+                    ))}
+                  </span>
                 </span>
-              </span>
 
-              <span
-                ref={iconRef}
-                className="sm-icon relative w-[14px] h-[14px] shrink-0 inline-flex items-center justify-center [will-change:transform]"
-                aria-hidden="true"
-              >
                 <span
-                  ref={plusHRef}
-                  className="sm-icon-line absolute left-1/2 top-1/2 w-full h-[2px] bg-current rounded-[2px] -translate-x-1/2 -translate-y-1/2 [will-change:transform]"
-                />
-                <span
-                  ref={plusVRef}
-                  className="sm-icon-line sm-icon-line-v absolute left-1/2 top-1/2 w-full h-[2px] bg-current rounded-[2px] -translate-x-1/2 -translate-y-1/2 [will-change:transform]"
-                />
-              </span>
-            </button>
-          </div>
-        </header>
+                  ref={iconRef}
+                  className="sm-icon relative w-[14px] h-[14px] shrink-0 inline-flex items-center justify-center [will-change:transform]"
+                  aria-hidden="true"
+                >
+                  <span
+                    ref={plusHRef}
+                    className="sm-icon-line absolute left-1/2 top-1/2 w-full h-[2px] bg-current rounded-[2px] -translate-x-1/2 -translate-y-1/2 [will-change:transform]"
+                  />
+                  <span
+                    ref={plusVRef}
+                    className="sm-icon-line sm-icon-line-v absolute left-1/2 top-1/2 w-full h-[2px] bg-current rounded-[2px] -translate-x-1/2 -translate-y-1/2 [will-change:transform]"
+                  />
+                </span>
+              </button>
+            </div>
+          </header>
+        </StairPreloader>
 
         <aside
           id="staggered-menu-panel"

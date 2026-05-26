@@ -3,6 +3,7 @@ import Sidebar from './Sidebar';
 import ClickSpark from './ClickSpark';
 import StaggeredMenu from './StaggeredMenu';
 import { useTheme } from 'next-themes';
+import StairPreloader from './StairPreloader';
 
 export default function Layout({ children }) {
   const { resolvedTheme } = useTheme();
@@ -29,9 +30,13 @@ export default function Layout({ children }) {
   return (
     <ClickSpark sparkColor="#000" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
       <div className="flex h-screen w-full bg-background overflow-hidden font-body text-primary">
-        <div className="w-64 border-r border-divider flex-col bg-surface shrink-0 hidden md:flex">
+        <StairPreloader
+          delay={0}
+          direction="ltr"
+          className="w-64 border-r border-divider flex-col bg-surface shrink-0 hidden md:flex"
+        >
           <Sidebar />
-        </div>
+        </StairPreloader>
         <div className="md:hidden">
           <StaggeredMenu 
             items={menuItems}
