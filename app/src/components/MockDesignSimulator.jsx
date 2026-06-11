@@ -12,8 +12,6 @@ export default function MockDesignSimulator({ projectId }) {
   }, []);
 
   switch (projectId) {
-    case 'pettech':
-      return <PetTechSimulator ticker={ticker} />;
     case 'inventory':
       return <InventorySimulator ticker={ticker} />;
     case 'planner':
@@ -29,77 +27,7 @@ export default function MockDesignSimulator({ projectId }) {
   }
 }
 
-// 1. PetTech SaaS Portal Simulator
-function PetTechSimulator({ ticker }) {
-  const pulseRate = 70 + (ticker % 15);
-  const statusList = [
-    { id: '#092', name: 'Max (Labrador)', stat: 'CRÍTICO', color: 'text-error border-error' },
-    { id: '#114', name: 'Luna (Persa)', stat: 'ESTÁVEL', color: 'text-primary border-divider' },
-    { id: '#118', name: 'Thor (Golden)', stat: 'MONITORANDO', color: 'text-outline border-outline' },
-  ];
-
-  return (
-    <div className="w-full h-full flex flex-col justify-between p-6 bg-surface-container-highest text-primary font-mono text-xs select-none">
-      {/* Header telemetry details */}
-      <div className="flex justify-between items-center border-b border-divider pb-3">
-        <span className="font-bold tracking-widest text-[10px] uppercase">// SYS.METRIC.STREAMER //</span>
-        <span className="px-2 py-0.5 border border-divider text-[10px] bg-background">LIVE OK</span>
-      </div>
-
-      {/* Main content grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-auto py-4">
-        {/* Heart Rate / ECG Column */}
-        <div className="col-span-1 md:col-span-2 border border-divider p-4 bg-background relative flex flex-col justify-between h-40">
-          <div className="flex justify-between items-start">
-            <div>
-              <div className="text-[10px] text-outline font-bold">SENSORES T-08 (TELEMETRIA VITAL)</div>
-              <div className="text-2xl font-bold tracking-tighter mt-1">{pulseRate} <span className="text-xs text-outline font-normal">BPM</span></div>
-            </div>
-            <div className="w-3 h-3 rounded-full bg-error animate-ping"></div>
-          </div>
-          
-          {/* ECG Line Path simulation */}
-          <div className="w-full h-16 overflow-hidden relative mt-2 border-t border-dotted border-divider/60 pt-2">
-            <svg viewBox="0 0 300 60" className="w-full h-full stroke-primary fill-none stroke-[2]">
-              <path
-                d="M 0 30 L 50 30 L 60 10 L 70 50 L 80 30 L 130 30 L 140 5 Q 145 0 150 55 L 155 30 L 210 30 L 220 15 L 225 45 L 230 30 L 300 30"
-                style={{
-                  strokeDasharray: '300',
-                  strokeDashoffset: (300 - (ticker * 6) % 300).toString(),
-                  transition: 'stroke-dashoffset 0.8s linear'
-                }}
-              />
-            </svg>
-          </div>
-        </div>
-
-        {/* Patients Column */}
-        <div className="col-span-1 border border-divider p-4 bg-surface flex flex-col justify-between h-40">
-          <div className="text-[10px] text-outline font-bold uppercase tracking-wider mb-2">Painel de Triagem</div>
-          <div className="flex flex-col gap-2 flex-grow justify-center">
-            {statusList.map((pt, i) => (
-              <div key={pt.id} className="flex justify-between items-center text-[10px] border-b border-divider/40 pb-1">
-                <span className="font-bold">{pt.id}</span>
-                <span className="text-outline truncate max-w-[80px]">{pt.name}</span>
-                <span className={`px-1.5 py-0.2 border text-[9px] ${pt.color}`}>
-                  {i === 0 && (ticker % 3 === 0) ? 'ALERTA' : pt.stat}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Footer metadata */}
-      <div className="border-t border-divider pt-3 flex justify-between items-center text-[9px] text-outline">
-        <span>VET_INDEX_SYS_ACTIVE: OK</span>
-        <span>LATENCY: 12ms</span>
-      </div>
-    </div>
-  );
-}
-
-// 2. Inventory Control SaaS Simulator
+// 1. Inventory Control SaaS Simulator
 function InventorySimulator({ ticker }) {
   const [scanStep, setScanStep] = useState(0);
 
@@ -111,9 +39,9 @@ function InventorySimulator({ ticker }) {
   }, [ticker]);
 
   const items = [
-    { sku: 'SKU-8392-A', desc: 'Gabinete Servidor XL', loc: 'Corr. C-4' },
-    { sku: 'SKU-1049-C', desc: 'Switch Fibra 48p', loc: 'Corr. A-12' },
-    { sku: 'SKU-5839-F', desc: 'Roteador Mesh Wifi6', loc: 'Corr. F-2' }
+    { sku: 'SKU-8392-A', desc: 'Server Cabinet XL', loc: 'Aisle C-4' },
+    { sku: 'SKU-1049-C', desc: 'Fiber Switch 48p', loc: 'Aisle A-12' },
+    { sku: 'SKU-5839-F', desc: 'Mesh Wifi6 Router', loc: 'Aisle F-2' }
   ];
 
   return (
@@ -126,12 +54,12 @@ function InventorySimulator({ ticker }) {
       <div className="my-auto py-4 grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Scanner Simulation Window */}
         <div className="border border-divider p-4 bg-background relative flex flex-col justify-between h-40 overflow-hidden">
-          <div className="text-[10px] text-outline font-bold">DISPOSITIVO COLETOR MOBILE</div>
+          <div className="text-[10px] text-outline font-bold">MOBILE SCANNER DEVICE</div>
           
           <div className="flex-1 flex flex-col items-center justify-center my-2 relative">
             {scanStep === 0 && (
               <div className="text-center py-2 border border-dashed border-divider w-full">
-                <span className="text-[10px] text-outline">APROXIME O CÓDIGO DE BARRAS</span>
+                <span className="text-[10px] text-outline">SCAN BARCODE</span>
               </div>
             )}
             
@@ -150,10 +78,10 @@ function InventorySimulator({ ticker }) {
                 <div className="absolute top-0 left-0 w-full h-[2px] bg-error animate-bounce"></div>
               </div>
             )}
-
+ 
             {scanStep === 2 && (
               <div className="w-full h-12 bg-primary text-on-primary flex items-center justify-center font-bold tracking-widest text-[10px]">
-                CONFERIDO COM SUCESSO ✔
+                SUCCESSFULLY VERIFIED ✔
               </div>
             )}
           </div>
@@ -167,7 +95,7 @@ function InventorySimulator({ ticker }) {
         {/* Real-time Inventory Verification Queue */}
         <div className="border border-divider p-4 bg-surface flex flex-col justify-between h-40">
           <div>
-            <div className="text-[10px] text-outline font-bold mb-2 uppercase">Fila de Conferência</div>
+            <div className="text-[10px] text-outline font-bold mb-2 uppercase">Verification Queue</div>
             <div className="flex flex-col gap-1.5">
               {items.map((item, idx) => (
                 <div key={item.sku} className="flex justify-between items-center text-[9px] border-b border-divider/40 pb-1">
@@ -178,9 +106,9 @@ function InventorySimulator({ ticker }) {
                   <div className="flex flex-col items-end">
                     <span className="text-outline">{item.loc}</span>
                     {idx === 0 && scanStep === 2 ? (
-                      <span className="text-[8px] bg-primary text-on-primary px-1">APROVADO</span>
+                      <span className="text-[8px] bg-primary text-on-primary px-1">APPROVED</span>
                     ) : (
-                      <span className="text-[8px] border border-divider px-1">FILA</span>
+                      <span className="text-[8px] border border-divider px-1">QUEUE</span>
                     )}
                   </div>
                 </div>
@@ -198,7 +126,7 @@ function InventorySimulator({ ticker }) {
   );
 }
 
-// 3. Academic Task & LMS Planner Simulator
+// 2. Academic Task & LMS Planner Simulator
 function PlannerSimulator({ ticker }) {
   const [checked, setChecked] = useState([true, false, false]);
 
@@ -214,9 +142,9 @@ function PlannerSimulator({ ticker }) {
   const percentage = Math.round((checked.filter(Boolean).length / checked.length) * 100);
 
   const tasks = [
-    { title: 'Enviar Relatório de Física', source: 'FIS-101' },
-    { title: 'Leitura Capítulo 4', source: 'LIT-200' },
-    { title: 'Entregar Exercício Banco de Dados', source: 'INF-320' }
+    { title: 'Submit Physics Report', source: 'PHY-101' },
+    { title: 'Read Chapter 4', source: 'LIT-200' },
+    { title: 'Submit Database Assignment', source: 'CS-320' }
   ];
 
   return (
@@ -229,7 +157,7 @@ function PlannerSimulator({ ticker }) {
       <div className="my-auto py-4 grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Checklist */}
         <div className="col-span-1 md:col-span-2 border border-divider p-4 bg-background flex flex-col justify-between h-40">
-          <div className="text-[10px] text-outline font-bold mb-2">TAREFAS DA SEMANA</div>
+          <div className="text-[10px] text-outline font-bold mb-2">WEEKLY TASKS</div>
           <div className="flex flex-col gap-2">
             {tasks.map((task, i) => (
               <div
@@ -252,7 +180,7 @@ function PlannerSimulator({ ticker }) {
 
         {/* Progress Radial Gauge */}
         <div className="col-span-1 border border-divider p-4 bg-surface flex flex-col items-center justify-between h-40 text-center">
-          <div className="text-[10px] text-outline font-bold uppercase tracking-wider">Metas Concluídas</div>
+          <div className="text-[10px] text-outline font-bold uppercase tracking-wider">Completed Goals</div>
           
           <div className="relative w-16 h-16 flex items-center justify-center my-2">
             {/* SVG Progress Circle */}
@@ -275,7 +203,7 @@ function PlannerSimulator({ ticker }) {
             <div className="absolute font-bold text-xs">{percentage}%</div>
           </div>
 
-          <div className="text-[8px] text-outline">ATUALIZADO AGORA</div>
+          <div className="text-[8px] text-outline">UPDATED JUST NOW</div>
         </div>
       </div>
 
@@ -287,7 +215,7 @@ function PlannerSimulator({ ticker }) {
   );
 }
 
-// 4. University Operations Hub Simulator
+// 3. University Operations Hub Simulator
 function UniversitySimulator({ ticker }) {
   const [activeStep, setActiveStep] = useState(0);
 
@@ -296,17 +224,17 @@ function UniversitySimulator({ ticker }) {
   }, [ticker]);
 
   const nodes = [
-    { label: 'Aluno', desc: 'Preenche Requisição' },
-    { label: 'Secretaria', desc: 'Triagem e Validação' },
-    { label: 'Coordenação', desc: 'Despacho e Deferimento' },
-    { label: 'Registro', desc: 'Emissão e Assinatura' }
+    { label: 'Student', desc: 'Submit Request' },
+    { label: 'Registrar', desc: 'Review & Validation' },
+    { label: 'Department', desc: 'Approval & Decision' },
+    { label: 'Records', desc: 'Issue & Sign' }
   ];
 
   return (
     <div className="w-full h-full flex flex-col justify-between p-6 bg-surface-container-highest text-primary font-mono text-xs select-none">
       <div className="flex justify-between items-center border-b border-divider pb-3">
         <span className="font-bold tracking-widest text-[10px] uppercase">// APPROVAL.WORKFLOW.GRAPH //</span>
-        <span className="px-2 py-0.5 border border-divider text-[10px] bg-background">AUTO-ROUTING: ON</span>
+        <span className="px-2 py-0.5 border border-divider text-[10px] bg-background">AUTO-ROUTING: ACTIVE</span>
       </div>
 
       {/* Nodes visual layout */}
@@ -345,7 +273,7 @@ function UniversitySimulator({ ticker }) {
 
       <div className="border-t border-divider pt-3 flex justify-between items-center text-[9px] text-outline">
         <span>FLOW_ID: REG-FLOW-2026</span>
-        <span>STATUS: {activeStep === 3 ? 'PROCESSO CONCLUÍDO' : 'EM PROCESSAMENTO'}</span>
+        <span>STATUS: {activeStep === 3 ? 'PROCESS COMPLETED' : 'PROCESSING'}</span>
       </div>
     </div>
   );

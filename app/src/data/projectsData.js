@@ -1,118 +1,89 @@
 export const projectsData = [
   {
-    id: "pettech",
-    title: "PetTech SaaS Portal",
-    stat: "UX/UI Design · Data Analytics",
-    description: "Arquitetura de informação e design de interface para uma plataforma de telemetria e análise clínica de animais de estimação. Painéis de visualização de dados complexos para suporte à decisão veterinária.",
-    image: "https://picsum.photos/seed/dogapi/800/400",
-    link: "https://github.com/lohr-1/thedogapi",
-    visaoGeral: "O PetTech SaaS Portal é uma plataforma completa de telemetria e análise de dados clínicos projetada para veterinários, clínicas e hospitais de grande porte. O sistema centraliza informações vitais coletadas de sensores corporais de animais internados, dados de exames laboratoriais anteriores e históricos médicos, fornecendo um fluxo de trabalho preditivo e painéis de controle integrados.",
-    problema: "Médicos veterinários em regime de plantão enfrentavam grande dificuldade em monitorar múltiplos animais em estado crítico de forma simultânea. As informações eram fragmentadas em prontuários físicos e diferentes aparelhos de monitoramento sem integração. Isso aumentava o tempo de reação a crises biológicas e gerava uma carga de estresse operacional excessiva na equipe.",
-    processo: {
-      intro: "O desenvolvimento seguiu uma metodologia centrada na experiência em cenários de alta pressão:",
-      steps: [
-        {
-          label: "1. Imersão Clínica",
-          detail: "Realizamos 12 sessões de shadowing acompanhando a rotina noturna de UTIs veterinárias para mapear os pontos críticos de coleta de dados e alarmes."
-        },
-        {
-          label: "2. Arquitetura de Prioridade",
-          detail: "Definimos uma escala de criticidade visual. Cada widget de animal passou por triagem estrutural baseada em thresholds biológicos configuráveis."
-        },
-        {
-          label: "3. Protótipos de Baixa Fidelidade",
-          detail: "Construímos wireframes interativos de alto contraste físico para garantir legibilidade perfeita mesmo sob iluminação adversa de consultórios."
-        }
-      ]
-    },
-    solucao: "Desenvolvemos uma interface modular de painéis dinâmicos. Os veterinários podem organizar a disposição dos painéis com base nas especialidades dos animais sob cuidados (ex: cardiologia, pós-operatório). Implementamos gráficos de série temporal interativos que compilam temperatura, batimentos cardíacos e saturação em uma única linha de tempo contínua, com sistema inteligente de alertas visuais piscantes.",
-    resultado: "Nos testes em ambiente simulado e piloto subsequente, registrou-se uma redução de 35% no tempo médio de resposta a intercorrências críticas. A satisfação da equipe de enfermagem veterinária aumentou substancialmente devido à centralização de alertas, e a taxa de adoção do software atingiu 92% na primeira semana de deploy institucional."
-  },
-  {
     id: "inventory",
-    title: "Inventory Control SaaS",
-    stat: "UX Architecture · B2B Operations",
-    description: "Design de jornadas operacionais complexas e interfaces de múltiplos estados para logística de estoque. Otimização de legibilidade de dados tabulares e fluxos rápidos de conferência física.",
+    title: "Municipal Inventory Control",
+    stat: "UX Design · Public Administration",
+    description: "Evolving an inventory control system in Oracle APEX for the municipal government, transforming it from a simple data entry log into an active management and decision-making tool.",
     image: "https://picsum.photos/seed/stock/800/400",
     link: "",
-    visaoGeral: "Este produto consiste em um portal SaaS corporativo robusto focado na gestão e controle logístico de grandes armazéns de distribuição (WMS). Ele conecta os gerentes de logística (que necessitam de visões analíticas abrangentes) aos operadores de pátio e galpão (que executam o picking e a conferência física rápida de mercadorias).",
-    problema: "A operação de separação de mercadorias registrava atrasos frequentes causados pela ineficiência no layout dos coletores de dados portáteis. Telas com layouts mal ajustados, excesso de campos textuais minúsculos e falta de feedback tátil/visual imediato após escaneamentos resultavam em 8% de erros de digitação e redespacho errôneo.",
+    visaoGeral: "The project aimed to evolve the inventory control system used by the Municipal Government of Iguaraçu. The solution, developed in Oracle APEX, needed to move away from functioning solely as a space for registering materials and instead begin supporting the tracking of movements, the organization of resources, and administrative decision-making.\n\nMy role involved understanding the operation of the existing system, identifying the needs of the civil servants, and structuring an evolution coherent with the city hall's routine. The focus of the project was not only on the interface but on improving the product as a whole, considering user flows, business rules, information visualization, and operational continuity.",
+    problema: "Inventory control was historically carried out through manual records and decentralized information. This made locating data difficult, reduced the reliability of records, and made tracking inflows and outflows more laborious.\n\nAlthough a first digital version was already deployed, the system still had significant limitations. Users did not have a managerial view of the stock, there was little traceability over movements, and there were no clear mechanisms to track materials by department or anticipate replenishment needs.\n\nThe challenge consisted, therefore, in transforming a predominantly operational tool into a product capable of providing control, visibility, and support to public management.",
     processo: {
-      intro: "Para estruturar a nova jornada de fluxo de estoque, executamos o seguinte processo design-led:",
+      intro: "The work was structured based on an incremental approach. The first stage consisted of analyzing the existing system and understanding the problems encountered during its daily use:",
       steps: [
         {
-          label: "1. Análise de Ruído",
-          detail: "Mapeamento das distrações e fadiga visual sofridas pelos operadores sob condições reais de carregamento de caixas e movimentação de empilhadeiras."
+          label: "1. Analysis & Immersion",
+          detail: "Analyzing the existing system and conducting interviews with municipal employees to map current workflow pain points."
         },
         {
-          label: "2. Mapeamento de Estados",
-          detail: "Catalogamos todos os estados operacionais possíveis do coletor: conectado, aguardando escaneamento, sucesso, erro de SKU e sinal offline."
+          label: "2. Need Prioritization",
+          detail: "Structuring and prioritizing requirements based on user impact and technical feasibility of implementation in Oracle APEX."
         },
         {
-          label: "3. Teste de Ergonomia",
-          detail: "Validação de tamanho mínimo de alvo de toque para polegares enquanto o operador segura uma prancheta ou caixa com a outra mão."
+          label: "3. Incremental Validation",
+          detail: "Evolving the system in smaller cycles, performing continuous tests with users to validate flows and refine usability."
         }
       ]
     },
-    solucao: "Redesenhamos a interface para rodar em modo web app responsivo de alta performance para tablets industriais e coletores. Criamos tabelas estáticas de visualização densa com fonte mono-espaçada para números de série, além de alertas em tela cheia com cores vibrantes para sinalização de falha de validação e sucesso de picking sem exigir que o operador leia textos pequenos.",
-    resultado: "Os erros de expedição caíram de 8% para menos de 0.8% nos primeiros três meses de uso assistido. Além disso, o tempo médio gasto na conferência de paletes de entrada foi otimizado em 20%, o que permitiu aos centros de distribuição ampliar sua capacidade diária de processamento de cargas."
+    solucao: "The proposed solution reorganizes the system around four core capabilities. First, the creation of reports and management dashboards, responsible for transforming stock records into clearer information for tracking and decision-making. Second, the traceability of movements, allowing the identification of the material moved, the type of operation performed, the department involved, the date, and the responsible user. Third, department-level control, which improves the visualization of material distribution and helps understand how resources are being used within the city hall. Finally, minimum stock alerts were planned, enabling administrators to identify in advance the materials that need to be replenished.",
+    resultado: "As the project is still in progress, there are no consolidated final metrics. The results presented correspond to the expected impacts and the criteria defined to evaluate the solution. The evolution of the system is expected to reduce the time required to locate information, increase the reliability of records, and improve control over material distribution. Traceability also tends to reduce inconsistencies and make it easier to assign responsibility for each movement. In the context of the city hall, the main expected impact is a more efficient use of public resources, with a reduction in waste and greater predictability in material replenishment."
   },
   {
     id: "planner",
     title: "Academic Task & LMS Planner",
-    stat: "Product Design · Education Tech",
-    description: "Concepção de fluxos e experiência integrada bidirecionalmente com o Moodle. Simplificação do acompanhamento de prazos e relatórios de progresso em um dashboard limpo.",
+    stat: "Product Design · EdTech",
+    description: "Concept design of flows and integrated experience bidirectionally with Moodle. Simplifying deadlines tracking and progress reports in a clean dashboard.",
     image: "https://picsum.photos/seed/task/800/400",
     link: "",
-    visaoGeral: "O Academic Planner é um planejador inteligente focado em estudantes e professores universitários. Ele se conecta de forma direta à API da plataforma Moodle da instituição de ensino, extraindo tarefas, prazos de entrega, notas e fóruns pendentes de forma a organizá-los em um fluxo de trabalho unificado, limpo e acionável.",
-    problema: "Alunos relatam sobrecarga mental e perda recorrente de prazos devido à interface obsoleta e excessivamente ramificada do Moodle tradicional. A fragmentação de calendários específicos para cada matéria dificultava a visualização holística da carga semanal de estudos.",
+    visaoGeral: "Academic Planner is an intelligent planner focused on university students and professors. It connects directly to the educational institution's Moodle API, extracting tasks, deadlines, grades, and pending forums to organize them into a unified, clean, and actionable workflow.",
+    problema: "Students reported mental overload and recurrent missed deadlines due to the obsolete and overly branched interface of traditional Moodle. Fragmented subject-specific calendars made it difficult to have a holistic view of the weekly study load.",
     processo: {
-      intro: "Adotamos um processo iterativo com foco direto no público jovem e acadêmico:",
+      intro: "We adopted an iterative process focusing directly on the young and academic audience:",
       steps: [
         {
           label: "1. Focus Groups",
-          detail: "Conduzimos discussões e dinâmicas com 15 estudantes de variados cursos para entender como eles organizavam sua agenda paralela de estudos."
+          detail: "We conducted discussions and workshops with 15 students from various courses to understand how they organized their study schedules."
         },
         {
-          label: "2. Jornada Unificada",
-          detail: "Desenho da arquitetura de fluxo que consolida tarefas manuais inseridas pelo próprio aluno com os prazos gerados automaticamente pelo professor."
+          label: "2. Unified Journey",
+          detail: "Design of the flow architecture consolidating manual tasks entered by the student with deadlines generated automatically by the professor."
         },
         {
-          label: "3. Iteração Rápida",
-          detail: "Protótipos em média fidelidade submetidos a testes de usabilidade semanais para simplificar o ato de marcar uma tarefa como 'concluída'."
+          label: "3. Rapid Iteration",
+          detail: "Medium-fidelity prototypes subjected to weekly usability tests to simplify the action of marking a task as 'completed'."
         }
       ]
     },
-    solucao: "Criação de um hub centralizado contendo um calendário drag-and-drop dinâmico, uma barra de progresso gamificada baseada nas entregas da semana, e um menu lateral limpo. O usuário consegue anexar arquivos e enviar o dever de casa diretamente pela nossa interface para o Moodle, eliminando 5 etapas redundantes de navegação.",
-    resultado: "A taxa de entrega pontual das disciplinas integradas à nova ferramenta subiu em 28%. Na pesquisa de usabilidade realizada ao término do semestre piloto, o produto obteve nota média de 4.8/5.0 em facilidade de uso, tornando-se o gerenciador de estudos padrão recomendado pela reitoria da instituição acadêmica parceira."
+    solucao: "Creation of a centralized hub containing a dynamic drag-and-drop calendar, a gamified progress bar based on the week's assignments, and a clean sidebar menu. Users can attach files and submit homework directly to Moodle through our interface, eliminating 5 redundant navigation steps.",
+    resultado: "The integration of the new tool is expected to increase on-time task submissions by up to 28% based on preliminary student workflows. During upcoming pilot phases, usability will be evaluated using academic surveys, with the goal of establishing the planner as the recommended study management solution across partner departments."
   },
   {
     id: "university",
     title: "University Operations Hub",
     stat: "Operational UX · Process Automation",
-    description: "Mapeamento de processos e design de portais administrativos corporativos. Redução do atrito em solicitações acadêmicas e automatização de fluxos de aprovação.",
+    description: "Process mapping and corporate administrative portal design. Reducing friction in academic requests and automating approval workflows.",
     image: "https://picsum.photos/seed/uni/800/400",
     link: "",
-    visaoGeral: "O University Operations Hub é um sistema ERP de nível corporativo voltado à automação e controle administrativo das operações internas de faculdades privadas. O hub integra os setores de secretaria, tesouraria, controle acadêmico e coordenação pedagógica em um único fluxo digital seguro.",
-    problema: "A tramitação de documentos estudantis básicos (como histórico escolar oficial e trancamento de matrícula) exigia o preenchimento de formulários de papel e aprovações físicas em múltiplos guichês. Esse atrito administrativo gerava atrasos de até 15 dias úteis e criava filas intermináveis na secretaria física nos começos de período.",
+    visaoGeral: "The University Operations Hub is an enterprise-grade ERP system aimed at the automation and administrative control of internal operations in private colleges. The hub integrates registry, treasury, academic records, and pedagogical coordination into a single, secure digital workflow.",
+    problema: "The processing of basic student documents (such as official transcripts and enrollment suspension) required filling out paper forms and obtaining physical approvals at multiple counters. This administrative friction caused delays of up to 15 business days and created endless lines at the physical registry office at the start of terms.",
     processo: {
-      intro: "Estruturamos as aprovações através de um mapeamento profundo dos fluxos operacionais internos:",
+      intro: "We structured approvals through deep mapping of internal operational flows:",
       steps: [
         {
           label: "1. Service Blueprinting",
-          detail: "Mapeamos os processos de ponta a ponta, listando ações do aluno, equipe de atendimento (frontstage) e sistemas/servidores legados (backstage)."
+          detail: "We mapped the processes end-to-end, listing student actions, frontstage staff actions, and legacy systems/servers (backstage)."
         },
         {
-          label: "2. Agrupamento Inteligente",
-          detail: "Reorganização das filas de tarefas administrativas de modo a automatizar rotas de envio com base na disponibilidade de coordenadores acadêmicos."
+          label: "2. Intelligent Batching",
+          detail: "Reorganizing administrative task queues to automate routing based on academic coordinators' availability."
         },
         {
-          label: "3. Design de Segurança",
-          detail: "Validação de etapas adicionais de aprovação e criptografia de assinaturas digitais direto na interface do painel do funcionário."
+          label: "3. Security Design",
+          detail: "Validation of additional approval steps and signature encryption directly in the staff dashboard interface."
         }
       ]
     },
-    solucao: "Idealizamos um painel administrativo com fluxo de filas inteligentes de tarefas pendentes organizadas por urgência do aluno e prazos contratuais. O sistema dispõe de formulários dinâmicos autovalidáveis para os alunos na ponta de entrada e um painel de despacho rápido para o funcionário aprovar solicitações repetitivas com apenas um clique.",
-    resultado: "Conseguimos reduzir o prazo de atendimento médio da secretaria de 14 dias úteis para menos de 48 horas úteis, digitalizando completamente mais de 15 mil solicitações mensais e gerando economia física em papelaria e suporte operacional na ordem de 60% ao ano."
+    solucao: "We conceptualized an administrative dashboard with smart task queues organized by student urgency and contract deadlines. The system features self-validating dynamic forms for students at the entry point and a quick dispatch panel for staff to approve repetitive requests with a single click.",
+    resultado: "The implementation of the hub is expected to reduce registry response times from 14 business days to under 48 business hours, with the capacity to fully digitalize over 15,000 monthly requests. This transition is projected to generate printing and operational support savings of approximately 60% annually upon institutional adoption."
   }
 ];

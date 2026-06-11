@@ -7,7 +7,7 @@
       "coreFocus": "// FOCO PRINCIPAL",
       "coreFocusDesc": "Projetando experiências digitais para plataformas SaaS complexas, traduzindo regras de negócios e fluxos operacionais em interfaces limpas, consistentes e escaláveis.",
       "workTab": "01 // TRABALHO",
-      "workTitle": "4 Projetos Selecionados",
+      "workTitle": "3 Projetos Selecionados",
       "workDesc": "Dashboards, sistemas de inventário e fluxos operacionais internos.",
       "expTab": "02 // EXPERIÊNCIA",
       "expTitle": "2 Anos Especializado",
@@ -46,7 +46,17 @@
       "sectionTitle": "SEC.03 // HABILIDADES & FERRAMENTAS",
       "techStack": "[STACK.TECH]",
       "designSkills": "Habilidades de Product Design",
-      "designTools": "Ferramentas & Plataformas"
+      "designTools": "Ferramentas & Plataformas",
+      "list": {
+        "infoArch": "Arq. de Informação",
+        "journeys": "Jornadas & Fluxos",
+        "designSystems": "Design Systems",
+        "wireframing": "Wireframing",
+        "saasStrategy": "Estratégia SaaS B2B",
+        "usability": "Testes de Usabilidade",
+        "visualDesign": "Design Visual",
+        "productDoc": "Doc. de Produto"
+      }
     },
     "contact": {
       "title": "Estou sempre aberto a conversar sobre novas oportunidades.",
@@ -57,6 +67,13 @@
       ],
       "downloadResume": "Baixar currículo",
       "work": "Trabalho"
+    },
+    "menu": {
+      "general": "Geral",
+      "about": "Sobre Mim",
+      "projects": "Projetos",
+      "skills": "Habilidades & Ferramentas",
+      "contact": "Contato"
     }
   }
 }

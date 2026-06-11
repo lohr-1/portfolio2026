@@ -7,7 +7,7 @@
       "coreFocus": "// CORE FOCUS",
       "coreFocusDesc": "Designing digital experiences for complex SaaS platforms, translating business rules and operational workflows into clean, consistent, and scalable interfaces.",
       "workTab": "01 // WORK",
-      "workTitle": "4 Selected Projects",
+      "workTitle": "3 Selected Projects",
       "workDesc": "Dashboards, inventory systems, and internal operational flows.",
       "expTab": "02 // EXPERIENCE",
       "expTitle": "2 Years Specialized",
@@ -46,7 +46,17 @@
       "sectionTitle": "SEC.03 // SKILLS & CAPABILITIES",
       "techStack": "[TECH.STACK]",
       "designSkills": "Product Design Skills",
-      "designTools": "Design Tools & Platforms"
+      "designTools": "Design Tools & Platforms",
+      "list": {
+        "infoArch": "Information Arch.",
+        "journeys": "Journeys & Flows",
+        "designSystems": "Design Systems",
+        "wireframing": "Wireframing",
+        "saasStrategy": "B2B SaaS Strategy",
+        "usability": "Usability Testing",
+        "visualDesign": "Visual Design",
+        "productDoc": "Product Doc."
+      }
     },
     "contact": {
       "title": "I'm always open to discussing new exciting opportunities.",
@@ -57,6 +67,13 @@
       ],
       "downloadResume": "Download resume",
       "work": "Work"
+    },
+    "menu": {
+      "general": "General",
+      "about": "About Me",
+      "projects": "Projects",
+      "skills": "Skills & Tools",
+      "contact": "Contact"
     }
   }
 }

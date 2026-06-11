@@ -1,14 +1,16 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { ArrowUpRight } from 'lucide-react';
 import { ThemeButton } from './ThemeButton';
 
 export default function Sidebar() {
+  const { t } = useTranslation();
   const items = [
-    { label: 'General', id: '#general' },
-    { label: 'About Me', id: '#about' },
-    { label: 'Projects', id: '#projects' },
-    { label: 'Skills & Tools', id: '#skills' },
-    { label: 'Contact', id: '#contact' }
+    { label: t('menu.general'), id: '#general' },
+    { label: t('menu.about'), id: '#about' },
+    { label: t('menu.projects'), id: '#projects' },
+    { label: t('menu.skills'), id: '#skills' },
+    { label: t('menu.contact'), id: '#contact' }
   ];
   
   return (

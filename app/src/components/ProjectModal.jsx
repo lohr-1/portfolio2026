@@ -9,11 +9,11 @@ export default function ProjectModal({ project, onClose }) {
   
   // Section refs for scroll spy and click-to-scroll
   const sections = [
-    { id: 'visao-geral', label: 'visão geral' },
-    { id: 'problema', label: 'problema' },
-    { id: 'processo', label: 'processo' },
-    { id: 'solucao', label: 'solução' },
-    { id: 'resultado', label: 'Resultado' }
+    { id: 'visao-geral', label: 'overview' },
+    { id: 'problema', label: 'challenge' },
+    { id: 'processo', label: 'process' },
+    { id: 'solucao', label: 'solution' },
+    { id: 'resultado', label: 'impact' }
   ];
 
   const handleClose = () => {
@@ -131,7 +131,7 @@ export default function ProjectModal({ project, onClose }) {
             onClick={handleClose}
             className="flex items-center gap-1.5 font-label text-xs uppercase tracking-widest text-primary hover:text-outline border border-divider hover:border-outline px-3 py-1.5 bg-background hover:bg-surface-container-highest transition-all duration-150 rounded-none cursor-pointer"
           >
-            fechar <X className="w-3.5 h-3.5" />
+            close <X className="w-3.5 h-3.5" />
           </button>
         </div>
 
@@ -176,7 +176,7 @@ export default function ProjectModal({ project, onClose }) {
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 font-label uppercase text-[10px] tracking-wider text-primary hover:text-outline transition-colors"
                 >
-                  repositório <GitBranch className="w-3.5 h-3.5" />
+                  repository <GitBranch className="w-3.5 h-3.5" />
                 </a>
               </div>
             )}
@@ -190,8 +190,8 @@ export default function ProjectModal({ project, onClose }) {
           >
             {/* 1. Visão Geral */}
             <section id="modal-sec-visao-geral" className="scroll-mt-6 border-b border-divider pb-8">
-              <span className="font-label text-[10px] text-outline uppercase tracking-widest block mb-3">// 01. VISÃO GERAL</span>
-              <h4 className="font-display text-2xl font-bold tracking-tight mb-4 uppercase text-primary">Sobre o Projeto</h4>
+              <span className="font-label text-[10px] text-outline uppercase tracking-widest block mb-3">// 01. OVERVIEW</span>
+              <h4 className="font-display text-2xl font-bold tracking-tight mb-4 uppercase text-primary">About the Project</h4>
               <p className="font-body text-primary text-sm leading-relaxed whitespace-pre-line">
                 {project.visaoGeral}
               </p>
@@ -199,8 +199,8 @@ export default function ProjectModal({ project, onClose }) {
 
             {/* 2. Problema */}
             <section id="modal-sec-problema" className="scroll-mt-6 border-b border-divider pb-8">
-              <span className="font-label text-[10px] text-outline uppercase tracking-widest block mb-3">// 02. PROBLEMA</span>
-              <h4 className="font-display text-2xl font-bold tracking-tight mb-4 uppercase text-primary">O Desafio Operacional</h4>
+              <span className="font-label text-[10px] text-outline uppercase tracking-widest block mb-3">// 02. CHALLENGE</span>
+              <h4 className="font-display text-2xl font-bold tracking-tight mb-4 uppercase text-primary">Operational Challenge</h4>
               <p className="font-body text-primary text-sm leading-relaxed">
                 {project.problema}
               </p>
@@ -208,8 +208,8 @@ export default function ProjectModal({ project, onClose }) {
 
             {/* 3. Processo */}
             <section id="modal-sec-processo" className="scroll-mt-6 border-b border-divider pb-8">
-              <span className="font-label text-[10px] text-outline uppercase tracking-widest block mb-3">// 03. PROCESSO</span>
-              <h4 className="font-display text-2xl font-bold tracking-tight mb-4 uppercase text-primary">Desenvolvimento & Metodologia</h4>
+              <span className="font-label text-[10px] text-outline uppercase tracking-widest block mb-3">// 03. PROCESS</span>
+              <h4 className="font-display text-2xl font-bold tracking-tight mb-4 uppercase text-primary">Development & Methodology</h4>
               <p className="font-body text-primary text-sm leading-relaxed mb-6">
                 {project.processo.intro}
               </p>
@@ -266,8 +266,8 @@ export default function ProjectModal({ project, onClose }) {
 
             {/* 4. Solução */}
             <section id="modal-sec-solucao" className="scroll-mt-6 border-b border-divider pb-8">
-              <span className="font-label text-[10px] text-outline uppercase tracking-widest block mb-3">// 04. SOLUÇÃO</span>
-              <h4 className="font-display text-2xl font-bold tracking-tight mb-4 uppercase text-primary">Solução Proposta</h4>
+              <span className="font-label text-[10px] text-outline uppercase tracking-widest block mb-3">// 04. SOLUTION</span>
+              <h4 className="font-display text-2xl font-bold tracking-tight mb-4 uppercase text-primary">Proposed Solution</h4>
               <p className="font-body text-primary text-sm leading-relaxed">
                 {project.solucao}
               </p>
@@ -275,8 +275,8 @@ export default function ProjectModal({ project, onClose }) {
 
             {/* 5. Resultado */}
             <section id="modal-sec-resultado" className="scroll-mt-6 pb-4">
-              <span className="font-label text-[10px] text-outline uppercase tracking-widest block mb-3">// 05. RESULTADO</span>
-              <h4 className="font-display text-2xl font-bold tracking-tight mb-4 uppercase text-primary">Resultados Alcançados</h4>
+              <span className="font-label text-[10px] text-outline uppercase tracking-widest block mb-3">// 05. OUTCOME</span>
+              <h4 className="font-display text-2xl font-bold tracking-tight mb-4 uppercase text-primary">Expected Impact</h4>
               <p className="font-body text-primary text-sm leading-relaxed">
                 {project.resultado}
               </p>
@@ -290,7 +290,7 @@ export default function ProjectModal({ project, onClose }) {
                     rel="noopener noreferrer"
                     className="flex items-center gap-1.5 font-label uppercase text-[10px] tracking-wider text-primary border border-divider hover:border-outline px-4 py-2 bg-surface hover:bg-surface-container-highest transition-all duration-150"
                   >
-                    visualizar repositório <ArrowUpRight className="w-3.5 h-3.5" />
+                    view repository <ArrowUpRight className="w-3.5 h-3.5" />
                   </a>
                 </div>
               )}

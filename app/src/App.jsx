@@ -36,14 +36,14 @@ const tools = [
 ];
 
 const skills = [
-  { name: 'Information Arch.', icon: <GitBranch className="w-8 h-8" /> },
-  { name: 'Journeys & Flows', icon: <Compass className="w-8 h-8" /> },
-  { name: 'Design Systems', icon: <LayoutPanelLeft className="w-8 h-8" /> },
-  { name: 'Wireframing', icon: <PenTool className="w-8 h-8" /> },
-  { name: 'B2B SaaS Strategy', icon: <Globe className="w-8 h-8" /> },
-  { name: 'Usability Testing', icon: <ClipboardCheck className="w-8 h-8" /> },
-  { name: 'Visual Design', icon: <Palette className="w-8 h-8" /> },
-  { name: 'Product Doc.', icon: <FileText className="w-8 h-8" /> },
+  { key: 'infoArch', icon: <GitBranch className="w-8 h-8" /> },
+  { key: 'journeys', icon: <Compass className="w-8 h-8" /> },
+  { key: 'designSystems', icon: <LayoutPanelLeft className="w-8 h-8" /> },
+  { key: 'wireframing', icon: <PenTool className="w-8 h-8" /> },
+  { key: 'saasStrategy', icon: <Globe className="w-8 h-8" /> },
+  { key: 'usability', icon: <ClipboardCheck className="w-8 h-8" /> },
+  { key: 'visualDesign', icon: <Palette className="w-8 h-8" /> },
+  { key: 'productDoc', icon: <FileText className="w-8 h-8" /> },
 ];
 
 export default function App() {
@@ -234,9 +234,9 @@ export default function App() {
             </RevealBlock>
             <div className="grid grid-cols-2 lg:grid-cols-4">
               {skills.map((skill, index) => (
-                <RevealBlock key={skill.name} delay={index * 0.05} className="col-span-1 border-b border-divider border-r [&:nth-child(2n)]:border-r-0 lg:[&:nth-child(2n)]:border-r lg:[&:nth-child(4n)]:border-r-0 aspect-square sm:aspect-auto sm:h-64 flex flex-col items-center justify-center p-8 gap-4 hover:bg-primary hover:text-on-primary transition-colors duration-150 animate-fade">
+                <RevealBlock key={skill.key} delay={index * 0.05} className="col-span-1 border-b border-divider border-r [&:nth-child(2n)]:border-r-0 lg:[&:nth-child(2n)]:border-r lg:[&:nth-child(4n)]:border-r-0 aspect-square sm:aspect-auto sm:h-64 flex flex-col items-center justify-center p-8 gap-4 hover:bg-primary hover:text-on-primary transition-colors duration-150 animate-fade">
                   {skill.icon}
-                  <span className="font-label text-xs uppercase tracking-widest text-center">{skill.name}</span>
+                  <span className="font-label text-xs uppercase tracking-widest text-center">{t(`skills.list.${skill.key}`)}</span>
                 </RevealBlock>
               ))}
             </div>

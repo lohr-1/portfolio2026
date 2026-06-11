@@ -4,6 +4,7 @@ import ClickSpark from './ClickSpark';
 import StaggeredMenu from './StaggeredMenu';
 import { useTheme } from 'next-themes';
 import StairPreloader from './StairPreloader';
+import { useTranslation } from 'react-i18next';
 
 export default function Layout({ children }) {
   const { resolvedTheme } = useTheme();
@@ -14,12 +15,14 @@ export default function Layout({ children }) {
     ? ['#252523', '#1e1e1c', '#161615'] 
     : ['#e6e6e6', '#d9d9d9', '#cccccc'];
 
+  const { t } = useTranslation();
+
   const menuItems = [
-    { label: 'General', link: '#general' },
-    { label: 'About Me', link: '#about' },
-    { label: 'Projects', link: '#projects' },
-    { label: 'Skills & Tools', link: '#skills' },
-    { label: 'Contact', link: '#contact' }
+    { label: t('menu.general'), link: '#general' },
+    { label: t('menu.about'), link: '#about' },
+    { label: t('menu.projects'), link: '#projects' },
+    { label: t('menu.skills'), link: '#skills' },
+    { label: t('menu.contact'), link: '#contact' }
   ];
   
   const socialItems = [
